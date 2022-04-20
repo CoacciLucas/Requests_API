@@ -1,0 +1,13 @@
+C:\Users\Lucas Coacci\source\repos\UserCRUD_API\Infra\bin\Debug\netcoreapp3.1\Infra.deps.json
+C:\Users\Lucas Coacci\source\repos\UserCRUD_API\Infra\bin\Debug\netcoreapp3.1\Infra.dll
+C:\Users\Lucas Coacci\source\repos\UserCRUD_API\Infra\bin\Debug\netcoreapp3.1\Infra.pdb
+C:\Users\Lucas Coacci\source\repos\UserCRUD_API\Infra\bin\Debug\netcoreapp3.1\Domain.dll
+C:\Users\Lucas Coacci\source\repos\UserCRUD_API\Infra\bin\Debug\netcoreapp3.1\Domain.pdb
+C:\Users\Lucas Coacci\source\repos\UserCRUD_API\Infra\obj\Debug\netcoreapp3.1\Infra.csproj.AssemblyReference.cache
+C:\Users\Lucas Coacci\source\repos\UserCRUD_API\Infra\obj\Debug\netcoreapp3.1\Infra.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lucas Coacci\source\repos\UserCRUD_API\Infra\obj\Debug\netcoreapp3.1\Infra.AssemblyInfoInputs.cache
+C:\Users\Lucas Coacci\source\repos\UserCRUD_API\Infra\obj\Debug\netcoreapp3.1\Infra.AssemblyInfo.cs
+C:\Users\Lucas Coacci\source\repos\UserCRUD_API\Infra\obj\Debug\netcoreapp3.1\Infra.csproj.CoreCompileInputs.cache
+C:\Users\Lucas Coacci\source\repos\UserCRUD_API\Infra\obj\Debug\netcoreapp3.1\Infra.csproj.CopyComplete
+C:\Users\Lucas Coacci\source\repos\UserCRUD_API\Infra\obj\Debug\netcoreapp3.1\Infra.dll
+C:\Users\Lucas Coacci\source\repos\UserCRUD_API\Infra\obj\Debug\netcoreapp3.1\Infra.pdb
