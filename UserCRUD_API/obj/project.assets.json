@@ -3060,12 +3060,34 @@
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
       },
+      "Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "Domain": "1.0.0",
+          "EntityFramework": "6.4.4",
+          "Infra": "1.0.0",
+          "Microsoft.AspNetCore.Mvc.Abstractions": "2.2.0",
+          "Microsoft.AspNetCore.Mvc.Core": "2.2.5",
+          "Microsoft.EntityFrameworkCore": "5.0.16",
+          "Microsoft.EntityFrameworkCore.InMemory": "5.0.16"
+        },
+        "compile": {
+          "bin/placeholder/Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Application.dll": {}
+        }
+      },
       "Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
+          "EntityFramework": "6.4.4",
+          "Microsoft.AspNetCore.Mvc.Abstractions": "2.2.0",
           "Microsoft.AspNetCore.Mvc.Core": "2.2.5",
-          "Microsoft.EntityFrameworkCore": "5.0.16"
+          "Microsoft.EntityFrameworkCore": "5.0.16",
+          "Microsoft.EntityFrameworkCore.InMemory": "5.0.16"
         },
         "compile": {
           "bin/placeholder/Domain.dll": {}
@@ -3079,7 +3101,11 @@
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
           "Domain": "1.0.0",
-          "Microsoft.AspNetCore.Mvc.Core": "2.2.5"
+          "EntityFramework": "6.4.4",
+          "Microsoft.AspNetCore.Mvc.Abstractions": "2.2.0",
+          "Microsoft.AspNetCore.Mvc.Core": "2.2.5",
+          "Microsoft.EntityFrameworkCore": "5.0.16",
+          "Microsoft.EntityFrameworkCore.InMemory": "5.0.16"
         },
         "compile": {
           "bin/placeholder/Infra.dll": {}
@@ -9741,6 +9767,11 @@
         "system.xml.xmlserializer.nuspec"
       ]
     },
+    "Application/1.0.0": {
+      "type": "project",
+      "path": "../Application/Application.csproj",
+      "msbuildProject": "../Application/Application.csproj"
+    },
     "Domain/1.0.0": {
       "type": "project",
       "path": "../Domain/Domain.csproj",
@@ -9754,9 +9785,11 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "Application >= 1.0.0",
       "Domain >= 1.0.0",
       "EntityFramework >= 6.4.4",
       "Infra >= 1.0.0",
+      "Microsoft.AspNetCore.Mvc.Abstractions >= 2.2.0",
       "Microsoft.EntityFrameworkCore >= 5.0.16",
       "Microsoft.EntityFrameworkCore.InMemory >= 5.0.16",
       "Microsoft.EntityFrameworkCore.SqlServer >= 3.1.24",
@@ -9795,6 +9828,9 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
+            "C:\\Users\\Lucas Coacci\\source\\repos\\UserCRUD_API\\Application\\Application.csproj": {
+              "projectPath": "C:\\Users\\Lucas Coacci\\source\\repos\\UserCRUD_API\\Application\\Application.csproj"
+            },
             "C:\\Users\\Lucas Coacci\\source\\repos\\UserCRUD_API\\Domain\\Domain.csproj": {
               "projectPath": "C:\\Users\\Lucas Coacci\\source\\repos\\UserCRUD_API\\Domain\\Domain.csproj"
             },
@@ -9817,6 +9853,10 @@
           "EntityFramework": {
             "target": "Package",
             "version": "[6.4.4, )"
+          },
+          "Microsoft.AspNetCore.Mvc.Abstractions": {
+            "target": "Package",
+            "version": "[2.2.0, )"
           },
           "Microsoft.EntityFrameworkCore": {
             "target": "Package",

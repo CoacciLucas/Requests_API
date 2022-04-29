@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Domain
 {
@@ -11,6 +10,6 @@ namespace Domain
         public List<Produto> Items { get; private set; }
         public Status Status { get; private set; }
         public decimal ValorTotal { get; private set; }
-            
+
     }
 }

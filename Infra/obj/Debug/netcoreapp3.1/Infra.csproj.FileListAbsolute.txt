@@ -11,3 +11,6 @@ C:\Users\Lucas Coacci\source\repos\UserCRUD_API\Infra\obj\Debug\netcoreapp3.1\In
 C:\Users\Lucas Coacci\source\repos\UserCRUD_API\Infra\obj\Debug\netcoreapp3.1\Infra.csproj.CopyComplete
 C:\Users\Lucas Coacci\source\repos\UserCRUD_API\Infra\obj\Debug\netcoreapp3.1\Infra.dll
 C:\Users\Lucas Coacci\source\repos\UserCRUD_API\Infra\obj\Debug\netcoreapp3.1\Infra.pdb
+C:\Users\Lucas Coacci\source\repos\UserCRUD_API\Infra\bin\Debug\netcoreapp3.1\Infra.runtimeconfig.json
+C:\Users\Lucas Coacci\source\repos\UserCRUD_API\Infra\bin\Debug\netcoreapp3.1\Infra.runtimeconfig.dev.json
+C:\Users\Lucas Coacci\source\repos\UserCRUD_API\Infra\obj\Debug\netcoreapp3.1\Infra.genruntimeconfig.cache

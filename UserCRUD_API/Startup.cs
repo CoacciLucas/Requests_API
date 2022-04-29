@@ -1,4 +1,5 @@
 using Domain;
+using Infra;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -22,7 +23,7 @@ namespace UserCRUD_API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<UsuarioContext>(opt =>
+            services.AddDbContext<Context>(opt =>
                opt.UseInMemoryDatabase("UserList"));
             services.AddControllers();
             services.AddControllers();
