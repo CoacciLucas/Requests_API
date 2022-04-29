@@ -1,7 +1,9 @@
-﻿using Domain;
+﻿using Domain.Entities;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Threading.Tasks;
 
-namespace Infra
+namespace Infra.Repository
 {
     public class UsuarioRepository
     {
@@ -11,17 +13,31 @@ namespace Infra
         {
             _context = context;
         }
-        public async Task CreateUsuarioDB (Usuario usuario)
+        public async Task CreateUsuarioDB(Usuario usuario)
         {
             _context.Usuarios.Add(usuario);
 
             await _context.SaveChangesAsync();
         }
 
-        public async Task GetUsuarioDB(Usuario usuario)
+        public async Task<Usuario> GetUsuarioDb(Guid id)
         {
-            _context.Usuarios.Add(usuario);
+            var usuario = await _context.Usuarios.FindAsync(id);
+            if (usuario == null)
+                throw new InvalidOperationException("Usuario não encontrado!");
 
+            return usuario;
+        }
+
+        public async Task UpdateUsuarioDb(Usuario usuario)
+        {
+            _context.Entry(usuario).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task DeleteUsuarioDb(Usuario usuario)
+        {
+            _context.Usuarios.Remove(usuario);
             await _context.SaveChangesAsync();
         }
 

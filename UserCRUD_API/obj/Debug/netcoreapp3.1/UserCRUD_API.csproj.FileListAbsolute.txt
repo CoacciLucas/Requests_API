@@ -51,7 +51,6 @@ C:\Users\Lucas Coacci\source\repos\UserCRUD_API\UserCRUD_API\bin\Debug\netcoreap
 C:\Users\Lucas Coacci\source\repos\UserCRUD_API\UserCRUD_API\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\Lucas Coacci\source\repos\UserCRUD_API\UserCRUD_API\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\Lucas Coacci\source\repos\UserCRUD_API\UserCRUD_API\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
-C:\Users\Lucas Coacci\source\repos\UserCRUD_API\UserCRUD_API\obj\Debug\netcoreapp3.1\UserCRUD_API.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Lucas Coacci\source\repos\UserCRUD_API\UserCRUD_API\bin\Debug\netcoreapp3.1\Microsoft.DotNet.PlatformAbstractions.dll
 C:\Users\Lucas Coacci\source\repos\UserCRUD_API\UserCRUD_API\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyModel.dll
 C:\Users\Lucas Coacci\source\repos\UserCRUD_API\UserCRUD_API\bin\Debug\netcoreapp3.1\Infra.dll

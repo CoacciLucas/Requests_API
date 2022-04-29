@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 
-namespace Domain
+namespace Domain.Entities
 {
     public class Usuario
     {
@@ -32,9 +32,10 @@ namespace Domain
             ValidarCpf(Cpf);
             ValidarEmail(Email);
             ValidarNome(Nome);
+            ValidarAtivo(Ativo);
         }
 
-        public static void ValidarEmail(string email)
+        public void ValidarEmail(string email)
         {
 
             int indexArr = email.IndexOf('@');
@@ -67,20 +68,18 @@ namespace Domain
                 }
             }
             else
-            {
                 throw new InvalidOperationException("Email Inválido");
-            }
+
         }
 
-        private static void ValidarNome(string nome)
+        private void ValidarNome(string nome)
         {
             if (string.IsNullOrEmpty(nome) || nome.Length > 60)
-            {
                 throw new InvalidOperationException("Nome Inválido");
-            }
+
         }
 
-        private static void ValidarCpf(string cpf)
+        private void ValidarCpf(string cpf)
         {
             int[] multiplicador1 = new int[9] { 10, 9, 8, 7, 6, 5, 4, 3, 2 };
             int[] multiplicador2 = new int[10] { 11, 10, 9, 8, 7, 6, 5, 4, 3, 2 };
@@ -116,6 +115,12 @@ namespace Domain
             digito = Regex.Replace(digito, "[^0-9]", "");
         }
 
+        private void ValidarAtivo(bool ativo)
+        {
+            if (ativo != true && ativo != false)
+                throw new InvalidOperationException("O ativo deve ser somente true ou false!");
+
+        }
         private bool BeAValidDate(DateTime date)
         {
             return !date.Equals(default);
@@ -141,6 +146,10 @@ namespace Domain
 
             if (!BeAValidDate(DataNascimento) && !NotBeAFutureDate(DataNascimento))
                 throw new InvalidOperationException("Data de nascimento inválida!");
+        }
+        public void DefinirAtivo(bool ativo)
+        {
+            Ativo = ativo;
         }
     }
 

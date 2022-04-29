@@ -6,6 +6,6 @@ namespace Application.Interfaces
 {
     public interface ICPFServices
     {
-        bool IsCpf(string cpf);
+        public void ValidarCpf(string cpf);
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Application.Commands;
-using Domain;
+using Domain.Entities;
 using Infra;
+using Infra.Repository;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
@@ -23,16 +24,12 @@ namespace Application.Services
             var usuario = new Usuario(usuarioCommand.Nome, usuarioCommand.Email, usuarioCommand.Cpf, usuarioCommand.DataNascimento);
 
             await _usuarioRepository.CreateUsuarioDB(usuario);
-
         }
         public async Task<VisualizarUsuario> GetUsuario(Guid id)
         {
-            var usuario = await _context.Usuarios.FindAsync(id);
+            var usuario = await _usuarioRepository.GetUsuarioDb(id);
             var viewUsuario = new VisualizarUsuario(usuario.Nome, usuario.Email, usuario.Cpf, usuario.DataNascimento);
-            if (usuario == null)
-            {
-                throw new InvalidOperationException("Usuário não encontrado!");
-            }
+
             return viewUsuario;
         }
         public async Task PutUsuario(Guid id, AtualizarUsuario usuarioCommand)
@@ -40,20 +37,19 @@ namespace Application.Services
             if (!UsuarioExists(id))
                 throw new ArgumentNullException("Usuário não foi encontrado");
 
-            var usuario = await _context.Usuarios.FindAsync(id);
+            var usuario = await _usuarioRepository.GetUsuarioDb(id);
             usuario.DefinirNome(usuarioCommand.Nome);
             usuario.DefinirCpf(usuarioCommand.Cpf);
             usuario.DefinirDataNascimento(usuarioCommand.DataNascimento);
+            usuario.DefinirAtivo(usuarioCommand.Ativo);
 
-            _context.Entry(usuario).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
+            await _usuarioRepository.UpdateUsuarioDb(usuario);
         }
         public async Task DeleteUsuario(Guid id)
         {
-            var usuario = await _context.Usuarios.FindAsync(id);
+            var usuario = await _usuarioRepository.GetUsuarioDb(id);
 
-            _context.Usuarios.Remove(usuario);
-            await _context.SaveChangesAsync();
+            await _usuarioRepository.DeleteUsuarioDb(usuario);
         }
 
         private bool UsuarioExists(Guid id)

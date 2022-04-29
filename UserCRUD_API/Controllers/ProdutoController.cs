@@ -1,6 +1,7 @@
-﻿/*using Application.Commands;
+﻿using Application.Commands;
 using Application.Services;
 using Domain;
+using Domain.Entities;
 using Infra;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -21,31 +22,31 @@ namespace UserCRUD_API
             _context = context;
         }
 
-        // GET: api/Usuarios
+        // GET: api/Produtos
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Produto>>> GetUsuarios()
+        public async Task<ActionResult<IEnumerable<Produto>>> GetProdutos()
         {
             return await _context.Produtos.ToListAsync();
         }
 
-        // GET: api/Usuarios/5
+        // GET: api/Produtos/5
         [HttpGet("{id}")]
-        public async Task<VisualizarUsuario> GetUsuario(Guid id)
+        public async Task<VisualizarProduto> GetProduto(Guid id)
         {
-            UsuarioService service = new UsuarioService(_context);
-            return await service.GetUsuario(id);
+            ProdutoService service = new ProdutoService(_context);
+            return await service.GetProduto(id);
         }
 
-        // PUT: api/Usuarios/5
+        // PUT: api/Produtos/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUsuario(Guid id, AtualizarUsuario usuarioCommand)
+        public async Task<IActionResult> PutProduto(Guid id, AtualizarProduto usuarioCommand)
         {
             try
             {
-                UsuarioService service = new UsuarioService(_context);
-                await service.PutUsuario(id, usuarioCommand);
+                ProdutoService service = new ProdutoService(_context);
+                await service.PutProduto(id, usuarioCommand);
                 return Created("", null);
             }
             catch (ArgumentNullException ex)
@@ -59,16 +60,16 @@ namespace UserCRUD_API
             }
         }
 
-        // POST: api/Usuarios
+        // POST: api/Produtos
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult> PostUsuario(CadastrarUsuario usuario)
+        public async Task<ActionResult> PostProduto(CadastrarProduto usuario)
         {
             try
             {
-                UsuarioService service = new UsuarioService(_context);
-                await service.PostUsuario(usuario);
+                ProdutoService service = new ProdutoService(_context);
+                await service.PostProduto(usuario);
                 return Created("", null);
             }
             catch (InvalidOperationException ex)
@@ -77,14 +78,14 @@ namespace UserCRUD_API
             }
         }
 
-        // DELETE: api/Usuarios/5
+        // DELETE: api/Produtos/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult> DeleteUsuario(Guid id)
+        public async Task<ActionResult> DeleteProduto(Guid id)
         {
             try
             {
-                UsuarioService service = new UsuarioService(_context);
-                await service.DeleteUsuario(id);
+                ProdutoService service = new ProdutoService(_context);
+                await service.DeleteProduto(id);
                 return Created("", null);
             }
             catch (InvalidOperationException ex)
@@ -95,4 +96,3 @@ namespace UserCRUD_API
 
     }
 }
-*/

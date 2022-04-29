@@ -1,12 +1,12 @@
 ﻿using System;
 
-namespace Domain
+namespace Domain.Entities
 {
     public class Produto
     {
         public Produto(string descricao, decimal valor, int quantidadeNoEstoque)
         {
-            IdProduto = Guid.NewGuid();
+            Id = Guid.NewGuid();
             Descricao = descricao;
             Valor = valor;
             Ativo = true;
@@ -14,7 +14,7 @@ namespace Domain
             ValidarProduto();
         }
         protected Produto() { }
-        public Guid IdProduto { get; private set; }
+        public Guid Id { get; private set; }
         public string Descricao { get; private set; }
         public decimal Valor { get; private set; }
         public bool Ativo { get; private set; }
@@ -25,6 +25,7 @@ namespace Domain
             ValidarDescricao(Descricao);
             ValidarValor(Valor);
             ValidarQuantidadeNoEstoque(QuantidadeNoEstoque);
+            ValidarAtivo(Ativo);
         }
 
         private void ValidarDescricao(string descricao)
@@ -43,6 +44,12 @@ namespace Domain
             }
         }
 
+        private void ValidarAtivo(bool ativo)
+        {
+            if (ativo != true && ativo != false)
+                throw new InvalidOperationException("O ativo deve ser apenas true or false!");
+        }
+
         private void ValidarQuantidadeNoEstoque(int quantidadeNoEstoque)
         {
             if (!(quantidadeNoEstoque % 1 == 0) || quantidadeNoEstoque < 0)
@@ -51,6 +58,26 @@ namespace Domain
             }
         }
 
+        public void DefinirDescricao(string descricao)
+        {
+            Descricao = descricao;
+            ValidarDescricao(Descricao);
+        }
+        public void DefinirValor(decimal valor)
+        {
+            Valor = valor;
+            ValidarValor(valor);
+        }
+        public void DefinirAtivo(bool ativo)
+        {
+            Ativo = ativo;
+            ValidarAtivo(ativo);
+        }
+        public void DefinirQuantidadeNoEstoque(int quantidadeNoEstoque)
+        {
+            QuantidadeNoEstoque = quantidadeNoEstoque;
+            ValidarQuantidadeNoEstoque(QuantidadeNoEstoque);
+        }
 
     }
 }

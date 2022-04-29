@@ -6,9 +6,8 @@ namespace Application.Commands
 {
     public class CadastrarProduto
     {
-        public string Descricao { get; private set; }
-        public decimal Valor { get; private set; }
-        public decimal Ativo { get; private set; }
-        public decimal QuantidadeNoEstoque { get; private set; }
+        public string Descricao { get; set; }
+        public decimal Valor { get; set; }
+        public int QuantidadeNoEstoque { get; set; }
     }
 }
