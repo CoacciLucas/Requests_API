@@ -1,8 +1,7 @@
-﻿using Application.Commands;
+﻿using Application.Commands.UsuarioCmd;
 using Domain.Entities;
 using Infra;
 using Infra.Repository;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 using System.Threading.Tasks;

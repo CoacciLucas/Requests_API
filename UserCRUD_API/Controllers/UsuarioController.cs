@@ -1,4 +1,5 @@
 ﻿using Application.Commands;
+using Application.Commands.UsuarioCmd;
 using Application.Services;
 using Domain.Entities;
 using Infra;

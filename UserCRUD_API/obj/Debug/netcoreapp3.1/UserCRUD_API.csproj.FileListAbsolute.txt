@@ -145,3 +145,4 @@ C:\Users\Lucas Coacci\source\repos\UserCRUD_API\UserCRUD_API\bin\Debug\netcoreap
 C:\Users\Lucas Coacci\source\repos\UserCRUD_API\UserCRUD_API\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
 C:\Users\Lucas Coacci\source\repos\UserCRUD_API\UserCRUD_API\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\Lucas Coacci\source\repos\UserCRUD_API\UserCRUD_API\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
+C:\Users\Lucas Coacci\source\repos\UserCRUD_API\UserCRUD_API\obj\Debug\netcoreapp3.1\UserCRUD_API.MvcApplicationPartsAssemblyInfo.cs

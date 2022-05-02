@@ -1,6 +1,5 @@
-﻿using Application.Commands;
+﻿using Application.Commands.ProdutoCmd;
 using Application.Services;
-using Domain;
 using Domain.Entities;
 using Infra;
 using Microsoft.AspNetCore.Mvc;

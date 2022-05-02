@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Application.Commands
+namespace Application.Commands.ProdutoCmd
 {
     public class VisualizarProduto
     {
