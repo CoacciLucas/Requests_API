@@ -7,19 +7,11 @@ namespace Application.Commands.PedidoCmd
 {
     public class VisualizarPedido
     {
-        public VisualizarPedido(Guid idUsuario, string descricao, List<Produto> items, Status status, decimal valorTotal)
+        public VisualizarPedido(Pedido pedido)
         {
-            IdUsuario = idUsuario;
-            Descricao = descricao;
-            Items = items;
-            Status = status;
-            ValorTotal = valorTotal;
+            this.pedido = pedido;
         }
 
-        public Guid IdUsuario { get; set; }
-        public string Descricao { get; set; }   
-        public List<Produto> Items { get; set; }
-        public Status Status { get; set; }
-        public decimal ValorTotal { get; set; }
+        public Pedido pedido { get; set; }
     }
 }

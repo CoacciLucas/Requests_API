@@ -2,6 +2,7 @@
 using Domain.Entities;
 using Infra;
 using Infra.Repository;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,45 +26,43 @@ namespace Application.Services
         {
 
             var pedido = new Pedido(pedidoCommand.IdUsuario,
-                pedidoCommand.Descricao,
-                pedidoCommand.Status,
-                pedidoCommand.ValorTotal);
+                pedidoCommand.Descricao);
 
-            await _pedidoRepository.CreatePedidoDB(pedido);
+            await _pedidoRepository.Add(pedido);
         }
-        public async Task PostItemPedido(InserirItemPedido pedidoCommand)
+        public async Task PostItemPedido(Guid id, InserirItemPedido pedidoCommand)
         {
 
             var produto = await _produtoRepository.GetProdutoDb(pedidoCommand.ProdutoId);
-            var pedido = await _pedidoRepository.GetPedidoDb(pedidoCommand.PedidoId);
+            var pedido = await _pedidoRepository.Get(id);
 
-            await _pedidoRepository.InserirItemPedidoDb(produto, pedido);
+            pedido.AdicionarItem(produto, pedidoCommand.Quantidade);
+            await _pedidoRepository.Update(pedido);
         }
-        public async Task<VisualizarPedido> GetPedido(Guid id)
+        public async Task<Pedido> GetPedido(Guid id)
         {
-            var pedido = await _pedidoRepository.GetPedidoDb(id);
-            var viewPedido = new VisualizarPedido(pedido.IdUsuario, pedido.Descricao, pedido.Itens, pedido.Status, pedido.ValorTotal);
+            var pedido = await _pedidoRepository.Get(id);
 
-            return viewPedido;
+            return pedido;
         }
-       /* public async Task PutPedido(Guid id, AtualizarPedido pedidoCommand)
-        {
-            if (!PedidoExists(id))
-                throw new ArgumentNullException("Pedido não foi encontrado");
+        /* public async Task PutPedido(Guid id, AtualizarPedido pedidoCommand)
+         {
+             if (!PedidoExists(id))
+                 throw new ArgumentNullException("Pedido não foi encontrado");
 
-            var pedido = await _pedidoRepository.GetPedidoDb(id);
-            pedido.DefinirDescricao(pedidoCommand.Descricao);
-            pedido.DefinirValor(pedidoCommand.Valor);
-            pedido.DefinirAtivo(pedidoCommand.Ativo);
-            pedido.DefinirQuantidadeNoEstoque(pedidoCommand.QuantidadeNoEstoque);
+             var pedido = await _pedidoRepository.GetPedidoDb(id);
+             pedido.DefinirDescricao(pedidoCommand.Descricao);
+             pedido.DefinirValor(pedidoCommand.Valor);
+             pedido.DefinirAtivo(pedidoCommand.Ativo);
+             pedido.DefinirQuantidadeNoEstoque(pedidoCommand.QuantidadeNoEstoque);
 
-            await _dpedidoRepository.UpdatePedidoDb(pedido);
-        }*/
+             await _dpedidoRepository.UpdatePedidoDb(pedido);
+         }*/
         public async Task DeletePedido(Guid id)
         {
-            var pedido = await _pedidoRepository.GetPedidoDb(id);
+            var pedido = await _pedidoRepository.Get(id);
 
-            await _pedidoRepository.DeletePedidoDb(pedido);
+            await _pedidoRepository.Delete(pedido);
         }
 
         private bool PedidoExists(Guid id)

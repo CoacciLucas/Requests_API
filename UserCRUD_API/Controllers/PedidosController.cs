@@ -96,7 +96,7 @@ namespace UserCRUD_API.Controllers
             }
 
         }
-        
+
 
         // DELETE: api/Pedidoes/5
         [HttpDelete("{id}")]
@@ -113,7 +113,20 @@ namespace UserCRUD_API.Controllers
 
             return pedido;
         }
-
+        [HttpPost("{id}/itens")]
+        public async Task<ActionResult> PostItemPedido(Guid id, InserirItemPedido pedidoCommand)
+        {
+            try
+            {
+                PedidoService service = new PedidoService(_context);
+                await service.PostItemPedido(id, pedidoCommand);
+                return Created("", null);
+            }
+            catch (InvalidOperationException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
         private bool PedidoExists(Guid id)
         {
             return _context.Pedidos.Any(e => e.Id == id);

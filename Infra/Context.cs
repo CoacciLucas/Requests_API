@@ -8,10 +8,18 @@ namespace Infra
         public Context(DbContextOptions<Context> options)
             : base(options)
         {
+
+        }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Item>()
+                .HasOne(p => p.Pedido)
+                .WithMany(b => b.Itens);
         }
 
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Produto> Produtos { get; set; }
         public DbSet<Pedido> Pedidos { get; set; }
+        public DbSet<Item> Itens { get; set; }
     }
 }

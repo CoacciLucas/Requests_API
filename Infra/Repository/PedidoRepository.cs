@@ -13,34 +13,28 @@ namespace Infra.Repository
         {
             _context = context;
         }
-        public async Task CreatePedidoDB(Pedido pedido)
+        public async Task Add(Pedido pedido)
         {
             _context.Pedidos.Add(pedido);
 
             await _context.SaveChangesAsync();
         }
 
-        public async Task<Pedido> GetPedidoDb(Guid id)
+        public async Task<Pedido> Get(Guid id)
         {
-            var Pedido = await _context.Pedidos.FindAsync(id);
+            var Pedido = await _context.Pedidos.Include(x=>x.Itens).FirstOrDefaultAsync(x => x.Id==id);
             if (Pedido == null)
                 throw new InvalidOperationException("Pedido não encontrado!");
             return Pedido;
         }
 
-        public async Task UpdatePedidoDb(Pedido Pedido)
+        public async Task Update(Pedido pedido)
         {
-            _context.Entry(Pedido).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
-        }
-        public async Task InserirItemPedidoDb(Produto item, Pedido pedido)
-        {
-            pedido.Itens.Add(item);
             _context.Entry(pedido).State = EntityState.Modified;
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeletePedidoDb(Pedido Pedido)
+        public async Task Delete(Pedido Pedido)
         {
             _context.Pedidos.Remove(Pedido);
             await _context.SaveChangesAsync();

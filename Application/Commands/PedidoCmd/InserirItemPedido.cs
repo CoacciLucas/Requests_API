@@ -8,6 +8,6 @@ namespace Application.Commands.PedidoCmd
     public class InserirItemPedido
     {
         public Guid ProdutoId { get; set; }
-        public Guid PedidoId { get; set; }
+        public int Quantidade { get; set; }
     }
 }
