@@ -1,6 +1,7 @@
 ﻿using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Infra.Repository
@@ -22,15 +23,21 @@ namespace Infra.Repository
 
         public async Task<Pedido> Get(Guid id)
         {
-            var Pedido = await _context.Pedidos.Include(x=>x.Itens).FirstOrDefaultAsync(x => x.Id==id);
-            if (Pedido == null)
+            var pedido = await _context.Pedidos.Include(x => x.Itens).FirstOrDefaultAsync(x => x.Id == id);
+            if (pedido == null)
                 throw new InvalidOperationException("Pedido não encontrado!");
-            return Pedido;
+            return pedido;
+        }
+        public async Task<IEnumerable<Pedido>> GetAll()
+        {
+            return await _context.Pedidos.Include(x => x.Itens).ToListAsync();
         }
 
         public async Task Update(Pedido pedido)
         {
-            _context.Entry(pedido).State = EntityState.Modified;
+            var item = await _context.Pedidos.Include(x => x.Itens).FirstOrDefaultAsync(x => x.Id == pedido.Id);
+            _context.Entry(item).State = EntityState.Modified;
+            _context.Pedidos.Update(item);
             await _context.SaveChangesAsync();
         }
 

@@ -12,9 +12,10 @@ namespace Infra
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Item>()
-                .HasOne(p => p.Pedido)
-                .WithMany(b => b.Itens);
+            modelBuilder.Entity<Pedido>()
+                .HasMany(p => p.Itens);
+            modelBuilder.Entity<Item>().Property(e => e.Id).ValueGeneratedNever();
+
         }
 
         public DbSet<Usuario> Usuarios { get; set; }

@@ -1,14 +1,14 @@
-﻿using System;
+﻿using Application.Commands.PedidoCmd;
+using Application.Services;
+using Domain.Entities;
+using Infra;
+using Infra.Repository;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Domain.Entities;
-using Infra;
-using Application.Commands.PedidoCmd;
-using Application.Services;
 
 namespace UserCRUD_API.Controllers
 {
@@ -17,24 +17,26 @@ namespace UserCRUD_API.Controllers
     public class PedidosController : ControllerBase
     {
         private readonly Context _context;
+        private readonly PedidoRepository _pedidoRepository;
 
         public PedidosController(Context context)
         {
             _context = context;
+            _pedidoRepository = new PedidoRepository(_context);
         }
 
-        // GET: api/Pedidoes
+        // GET: api/Pedidos
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Pedido>>> GetPedidos()
+        public async Task<IEnumerable<Pedido>> GetPedidos()
         {
-            return await _context.Pedidos.ToListAsync();
+            return await _pedidoRepository.GetAll();
         }
 
-        // GET: api/Pedidoes/5
+        // GET: api/Pedidos/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Pedido>> GetPedido(Guid id)
         {
-            var pedido = await _context.Pedidos.FindAsync(id);
+            var pedido = await _pedidoRepository.Get(id);
 
             if (pedido == null)
             {
@@ -44,7 +46,7 @@ namespace UserCRUD_API.Controllers
             return pedido;
         }
 
-        // PUT: api/Pedidoes/5
+        // PUT: api/Pedidos/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
@@ -77,7 +79,7 @@ namespace UserCRUD_API.Controllers
             return NoContent();
         }
 
-        // POST: api/Pedidoes
+        // POST: api/Pedidos
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
@@ -98,7 +100,7 @@ namespace UserCRUD_API.Controllers
         }
 
 
-        // DELETE: api/Pedidoes/5
+        // DELETE: api/Pedidos/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<Pedido>> DeletePedido(Guid id)
         {

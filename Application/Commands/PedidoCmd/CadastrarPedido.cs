@@ -8,7 +8,7 @@ namespace Application.Commands.PedidoCmd
     {
 
         public Guid IdUsuario { get; set; }
-        public string Descricao { get; set; }
+        public string DescricaoPedido { get; set; }
         public List<Produto> Itens { get; set; }
         public Status Status { get; set; }
         public decimal ValorTotal { get; set; }

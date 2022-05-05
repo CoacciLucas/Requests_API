@@ -26,7 +26,7 @@ namespace Application.Services
         {
 
             var pedido = new Pedido(pedidoCommand.IdUsuario,
-                pedidoCommand.Descricao);
+                pedidoCommand.DescricaoPedido);
 
             await _pedidoRepository.Add(pedido);
         }
@@ -37,6 +37,7 @@ namespace Application.Services
             var pedido = await _pedidoRepository.Get(id);
 
             pedido.AdicionarItem(produto, pedidoCommand.Quantidade);
+            await _context.SaveChangesAsync();
             await _pedidoRepository.Update(pedido);
         }
         public async Task<Pedido> GetPedido(Guid id)
@@ -45,6 +46,12 @@ namespace Application.Services
 
             return pedido;
         }
+        /*public async Task AdicionarItem(Produto produto, Pedido pedido ,int quantidade)
+        {
+            var item = new Item(produto, pedido, quantidade);
+            pedido.
+            ValorTotal = ValorTotal + (produto.Valor * quantidade);
+        }*/
         /* public async Task PutPedido(Guid id, AtualizarPedido pedidoCommand)
          {
              if (!PedidoExists(id))

@@ -8,6 +8,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using System;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace UserCRUD_API
 {
@@ -25,9 +27,10 @@ namespace UserCRUD_API
         {
             services.AddDbContext<Context>(opt =>
                opt.UseInMemoryDatabase("UserList"));
-            services.AddControllers();
-            services.AddControllers();
-
+            services.AddControllers()/*.AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
+            })*/;
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
             {
