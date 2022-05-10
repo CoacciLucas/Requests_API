@@ -61,7 +61,7 @@ namespace Application.Services
             var pedido = await _pedidoRepository.Get(id);
             var itemPedido = await _pedidoRepository.GetItem(idItem);
 
-            pedido.Delete(itemPedido);
+            pedido.RemoverItem(itemPedido);
 
             await _pedidoRepository.Update(pedido);
             await _context.SaveChangesAsync();

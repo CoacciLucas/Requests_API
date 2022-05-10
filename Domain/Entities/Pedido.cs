@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Domain.Entities
 {
@@ -25,15 +24,14 @@ namespace Domain.Entities
 
         public void AdicionarItem(Produto produto, int quantidade)
         {
-            /*Validar se o produto já existe na lista de itens*/
             if (_itens.Any(x => x.ProdutoId == produto.Id))
                 throw new InvalidOperationException("O produto ja existe na lista");
 
-            var item = new Item(produto, this, quantidade);
-            _itens.Add(item);
+            _itens.Add(new Item(produto, this, quantidade));
+
             ValorTotal += produto.Valor * quantidade;
         }
-        public void Delete(Item item)
+        public void RemoverItem(Item item)
         {
             _itens.Remove(item);
         }
