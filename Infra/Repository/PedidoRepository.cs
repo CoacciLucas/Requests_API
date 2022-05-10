@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Infra.Repository
@@ -28,6 +29,13 @@ namespace Infra.Repository
                 throw new InvalidOperationException("Pedido não encontrado!");
             return pedido;
         }
+        public async Task<Item> GetItem(Guid id)
+        {
+            var item = await _context.Itens.FindAsync(id);
+            if (item == null)
+                throw new InvalidOperationException("Pedido não encontrado!");
+            return item;
+        }
         public async Task<IEnumerable<Pedido>> GetAll()
         {
             return await _context.Pedidos.Include(x => x.Itens).ToListAsync();
@@ -45,6 +53,10 @@ namespace Infra.Repository
         {
             _context.Pedidos.Remove(Pedido);
             await _context.SaveChangesAsync();
+        }
+        public bool PedidoExists(Guid id)
+        {
+            return _context.Pedidos.Any(e => e.Id == id);
         }
     }
 }

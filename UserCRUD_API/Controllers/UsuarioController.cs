@@ -34,7 +34,7 @@ namespace UserCRUD_API
         public async Task<VisualizarUsuario> GetUsuario(Guid id)
         {
             UsuarioService service = new UsuarioService(_context);
-            return await service.GetUsuario(id);
+            return await service.Get(id);
         }
 
         // PUT: api/Usuarios/5
@@ -46,7 +46,7 @@ namespace UserCRUD_API
             try
             {
                 UsuarioService service = new UsuarioService(_context);
-                await service.PutUsuario(id, usuarioCommand);
+                await service.Update(id, usuarioCommand);
                 return Created("", null);
             }
             catch (ArgumentNullException ex)
@@ -69,7 +69,7 @@ namespace UserCRUD_API
             try
             {
                 UsuarioService service = new UsuarioService(_context);
-                await service.PostUsuario(usuario);
+                await service.Add(usuario);
                 return Created("", null);
             }
             catch (InvalidOperationException ex)
@@ -85,7 +85,7 @@ namespace UserCRUD_API
             try
             {
                 UsuarioService service = new UsuarioService(_context);
-                await service.DeleteUsuario(id);
+                await service.Delete(id);
                 return Created("", null);
             }
             catch (InvalidOperationException ex)

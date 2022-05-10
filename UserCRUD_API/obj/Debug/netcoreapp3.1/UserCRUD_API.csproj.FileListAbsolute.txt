@@ -146,9 +146,3 @@ C:\Users\Lucas Coacci\source\repos\UserCRUD_API\UserCRUD_API\bin\Debug\netcoreap
 C:\Users\Lucas Coacci\source\repos\UserCRUD_API\UserCRUD_API\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\Lucas Coacci\source\repos\UserCRUD_API\UserCRUD_API\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\Lucas Coacci\source\repos\UserCRUD_API\UserCRUD_API\obj\Debug\netcoreapp3.1\UserCRUD_API.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\Lucas Coacci\source\repos\UserCRUD_API\UserCRUD_API\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
-C:\Users\Lucas Coacci\source\repos\UserCRUD_API\UserCRUD_API\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
-C:\Users\Lucas Coacci\source\repos\UserCRUD_API\UserCRUD_API\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
-C:\Users\Lucas Coacci\source\repos\UserCRUD_API\UserCRUD_API\bin\Debug\netcoreapp3.1\System.Runtime.CompilerServices.Unsafe.dll
-C:\Users\Lucas Coacci\source\repos\UserCRUD_API\UserCRUD_API\bin\Debug\netcoreapp3.1\System.Text.Encodings.Web.dll
-C:\Users\Lucas Coacci\source\repos\UserCRUD_API\UserCRUD_API\bin\Debug\netcoreapp3.1\System.Text.Json.dll

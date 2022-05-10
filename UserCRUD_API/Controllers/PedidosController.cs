@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace UserCRUD_API.Controllers
@@ -66,7 +65,7 @@ namespace UserCRUD_API.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!PedidoExists(id))
+                if (!_pedidoRepository.PedidoExists(id))
                 {
                     return NotFound();
                 }
@@ -89,7 +88,7 @@ namespace UserCRUD_API.Controllers
             try
             {
                 PedidoService service = new PedidoService(_context);
-                await service.PostPedido(pedido);
+                await service.Post(pedido);
                 return Created("", null);
             }
             catch (InvalidOperationException ex)
@@ -102,7 +101,7 @@ namespace UserCRUD_API.Controllers
 
         // DELETE: api/Pedidos/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Pedido>> DeletePedido(Guid id)
+        public async Task<ActionResult<Pedido>> Delete(Guid id)
         {
             var pedido = await _context.Pedidos.FindAsync(id);
             if (pedido == null)
@@ -116,12 +115,12 @@ namespace UserCRUD_API.Controllers
             return pedido;
         }
         [HttpPost("{id}/itens")]
-        public async Task<ActionResult> PostItemPedido(Guid id, InserirItemPedido pedidoCommand)
+        public async Task<ActionResult> PostItemPedido(Guid id, ItemPedido pedidoCommand)
         {
             try
             {
                 PedidoService service = new PedidoService(_context);
-                await service.PostItemPedido(id, pedidoCommand);
+                await service.Post(id, pedidoCommand);
                 return Created("", null);
             }
             catch (InvalidOperationException ex)
@@ -129,9 +128,19 @@ namespace UserCRUD_API.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        private bool PedidoExists(Guid id)
+        [HttpDelete("{id}/itens")]
+        public async Task<ActionResult> DeleteItem(Guid id, Guid idItem)
         {
-            return _context.Pedidos.Any(e => e.Id == id);
+            try
+            {
+                PedidoService service = new PedidoService(_context);
+                await service.DeleteItemPedido(id, idItem);
+                return Created("", null);
+            }
+            catch (InvalidOperationException ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

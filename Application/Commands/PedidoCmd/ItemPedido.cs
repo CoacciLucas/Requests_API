@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Application.Commands.PedidoCmd
 {
-    public class InserirItemPedido
+    public class ItemPedido
     {
         public Guid ProdutoId { get; set; }
         public int Quantidade { get; set; }

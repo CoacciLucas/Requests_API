@@ -13,14 +13,14 @@ namespace Infra.Repository
         {
             _context = context;
         }
-        public async Task CreateUsuarioDB(Usuario usuario)
+        public async Task Create(Usuario usuario)
         {
             _context.Usuarios.Add(usuario);
 
             await _context.SaveChangesAsync();
         }
 
-        public async Task<Usuario> GetUsuarioDb(Guid id)
+        public async Task<Usuario> Get(Guid id)
         {
             var usuario = await _context.Usuarios.FindAsync(id);
             if (usuario == null)
@@ -29,13 +29,13 @@ namespace Infra.Repository
             return usuario;
         }
 
-        public async Task UpdateUsuarioDb(Usuario usuario)
+        public async Task Update(Usuario usuario)
         {
             _context.Entry(usuario).State = EntityState.Modified;
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteUsuarioDb(Usuario usuario)
+        public async Task Delete(Usuario usuario)
         {
             _context.Usuarios.Remove(usuario);
             await _context.SaveChangesAsync();

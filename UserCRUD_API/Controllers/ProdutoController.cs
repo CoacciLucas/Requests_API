@@ -33,7 +33,7 @@ namespace UserCRUD_API
         public async Task<VisualizarProduto> GetProduto(Guid id)
         {
             ProdutoService service = new ProdutoService(_context);
-            return await service.GetProduto(id);
+            return await service.Get(id);
         }
 
         // PUT: api/Produtos/5
@@ -45,7 +45,7 @@ namespace UserCRUD_API
             try
             {
                 ProdutoService service = new ProdutoService(_context);
-                await service.PutProduto(id, usuarioCommand);
+                await service.Update(id, usuarioCommand);
                 return Created("", null);
             }
             catch (ArgumentNullException ex)
@@ -68,7 +68,7 @@ namespace UserCRUD_API
             try
             {
                 ProdutoService service = new ProdutoService(_context);
-                await service.PostProduto(usuario);
+                await service.Add(usuario);
                 return Created("", null);
             }
             catch (InvalidOperationException ex)
@@ -84,7 +84,7 @@ namespace UserCRUD_API
             try
             {
                 ProdutoService service = new ProdutoService(_context);
-                await service.DeleteProduto(id);
+                await service.Delete(id);
                 return Created("", null);
             }
             catch (InvalidOperationException ex)
