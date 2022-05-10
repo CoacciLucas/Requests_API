@@ -1,4 +1,5 @@
 ﻿using Application.Commands.ProdutoCmd;
+using Application.Interfaces;
 using Domain.Entities;
 using Infra;
 using Infra.Repository;
@@ -7,7 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 namespace Application.Services
 {
-    public class ProdutoService
+    public class ProdutoService : IProdutoService
     {
         private readonly ProdutoRepository _produtoRepository;
         private readonly Context _context;
