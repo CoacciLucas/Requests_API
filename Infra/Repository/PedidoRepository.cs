@@ -17,9 +17,7 @@ namespace Infra.Repository
         }
         public async Task Add(Pedido pedido)
         {
-            _context.Pedidos.Add(pedido);
-
-            await _context.SaveChangesAsync();
+            await _context.Pedidos.AddAsync(pedido);
         }
 
         public async Task<Pedido> Get(Guid id)
@@ -45,14 +43,13 @@ namespace Infra.Repository
         {
             var item = await _context.Pedidos.Include(x => x.Itens).FirstOrDefaultAsync(x => x.Id == pedido.Id);
             _context.Entry(item).State = EntityState.Modified;
-            _context.Pedidos.Update(item);
-            await _context.SaveChangesAsync();
+            await Task.FromResult(_context.Set<Pedido>().Update(item));
         }
 
-        public async Task Delete(Pedido Pedido)
+        public async Task Delete(Pedido pedido)
         {
-            _context.Pedidos.Remove(Pedido);
-            await _context.SaveChangesAsync();
+            _context.Entry(pedido).State = EntityState.Deleted;
+            await Task.FromResult(_context.Set<Pedido>().Remove(pedido));
         }
         public bool PedidoExists(Guid id)
         {

@@ -11,6 +11,7 @@ namespace Domain.Entities
             Valor = valor;
             Ativo = true;
             QuantidadeNoEstoque = quantidadeNoEstoque;
+            /*Chamar o Validar()*/
         }
         protected Produto() { }
         public Guid Id { get; private set; }

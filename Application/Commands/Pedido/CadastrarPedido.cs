@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Application.Commands.PedidoCmd
+namespace Application.Commands
 {
     public class CadastrarPedido
     {

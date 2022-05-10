@@ -17,9 +17,7 @@ namespace Infra.Repository
         }
         public async Task Create(Produto produto)
         {
-            _context.Produtos.Add(produto);
-
-            await _context.SaveChangesAsync();
+            await _context.Produtos.AddAsync(produto);
         }
 
         public async Task<Produto> Get(Guid id)
@@ -33,13 +31,14 @@ namespace Infra.Repository
         public async Task Update(Produto produto)
         {
             _context.Entry(produto).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
+            await Task.FromResult(_context.Set<Produto>().Update(produto));
         }
 
         public async Task Delete(Produto produto)
         {
             _context.Produtos.Remove(produto);
-            await _context.SaveChangesAsync();
+            _context.Entry(produto).State = EntityState.Deleted;
+            await Task.FromResult(_context.Set<Produto>().Remove(produto));
         }
     }
 }

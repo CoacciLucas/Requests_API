@@ -1,9 +1,11 @@
-﻿using Application.Commands.ProdutoCmd;
+﻿using Application.Commands;
 using Application.Interfaces;
 using Domain.Entities;
 using Infra;
 using Infra.Repository;
+using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 namespace Application.Services
@@ -18,18 +20,29 @@ namespace Application.Services
             _context = context;
             _produtoRepository = new ProdutoRepository(_context);
         }
+        public async Task<List<VisualizarProduto>> GetAll()
+        {
+            var produtosParaVisualizacao = new List<VisualizarProduto>();
+            var produtos = await _context.Produtos.ToListAsync();
+
+            foreach (var produto in produtos)
+                produtosParaVisualizacao.Add(new VisualizarProduto(produto.Descricao, produto.Valor, produto.QuantidadeNoEstoque));
+
+            return produtosParaVisualizacao;
+        }
         public async Task Add(CadastrarProduto produtoCommand)
         {
             var produto = new Produto(produtoCommand.Descricao, produtoCommand.Valor, produtoCommand.QuantidadeNoEstoque);
 
             await _produtoRepository.Create(produto);
+            await _context.SaveChangesAsync();
         }
         public async Task<VisualizarProduto> Get(Guid id)
         {
             var produto = await _produtoRepository.Get(id);
-            var viewProduto = new VisualizarProduto(produto.Descricao, produto.Valor, produto.QuantidadeNoEstoque);
-            
-            return viewProduto;
+            var visualizarProduto = new VisualizarProduto(produto.Descricao, produto.Valor, produto.QuantidadeNoEstoque);
+
+            return visualizarProduto;
         }
         public async Task Update(Guid id, AtualizarProduto produtoCommand)
         {
@@ -37,18 +50,21 @@ namespace Application.Services
                 throw new ArgumentNullException("Produto não foi encontrado");
 
             var produto = await _produtoRepository.Get(id);
+
             produto.DefinirDescricao(produtoCommand.Descricao);
             produto.DefinirValor(produtoCommand.Valor);
             produto.DefinirAtivo(produtoCommand.Ativo);
             produto.DefinirQuantidadeNoEstoque(produtoCommand.QuantidadeNoEstoque);
 
             await _produtoRepository.Update(produto);
+            await _context.SaveChangesAsync();
         }
         public async Task Delete(Guid id)
         {
             var produto = await _produtoRepository.Get(id);
 
             await _produtoRepository.Delete(produto);
+            await _context.SaveChangesAsync();
         }
 
         private bool ProdutoExists(Guid id)

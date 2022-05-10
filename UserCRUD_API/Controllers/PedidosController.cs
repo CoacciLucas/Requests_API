@@ -1,4 +1,4 @@
-﻿using Application.Commands.PedidoCmd;
+﻿using Application.Commands;
 using Application.Services;
 using Domain.Entities;
 using Infra;
@@ -26,7 +26,7 @@ namespace UserCRUD_API.Controllers
 
         // GET: api/Pedidos
         [HttpGet]
-        public async Task<IEnumerable<Pedido>> GetPedidos()
+        public async Task<IEnumerable<Pedido>> GetAll()
         {
             return await _pedidoRepository.GetAll();
         }
@@ -88,7 +88,7 @@ namespace UserCRUD_API.Controllers
             try
             {
                 PedidoService service = new PedidoService(_context);
-                await service.Post(pedido);
+                await service.Add(pedido);
                 return Created("", null);
             }
             catch (InvalidOperationException ex)
@@ -120,7 +120,7 @@ namespace UserCRUD_API.Controllers
             try
             {
                 PedidoService service = new PedidoService(_context);
-                await service.Post(id, pedidoCommand);
+                await service.Add(id, pedidoCommand);
                 return Created("", null);
             }
             catch (InvalidOperationException ex)
@@ -134,7 +134,7 @@ namespace UserCRUD_API.Controllers
             try
             {
                 PedidoService service = new PedidoService(_context);
-                await service.DeleteItemPedido(id, idItem);
+                await service.DeleteItem(id, idItem);
                 return Created("", null);
             }
             catch (InvalidOperationException ex)

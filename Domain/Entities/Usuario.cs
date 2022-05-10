@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Text.RegularExpressions;
 
 namespace Domain.Entities
 {
@@ -14,6 +13,7 @@ namespace Domain.Entities
             DataNascimento = datanascimento;
             DataCadastro = DateTime.Now;
             Ativo = true;
+            /*Chamar o Validar()*/
         }
         protected Usuario() { }
         public Guid Id { get; private set; }

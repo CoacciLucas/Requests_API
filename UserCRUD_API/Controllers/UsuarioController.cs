@@ -1,10 +1,7 @@
 ﻿using Application.Commands;
-using Application.Commands.UsuarioCmd;
 using Application.Services;
-using Domain.Entities;
 using Infra;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -16,25 +13,27 @@ namespace UserCRUD_API
     public class UsuariosController : ControllerBase
     {
         private readonly Context _context;
+        private readonly UsuarioService _usuarioService;
 
         public UsuariosController(Context context)
         {
             _context = context;
+            _usuarioService = new UsuarioService(_context);
         }
 
         // GET: api/Usuarios
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Usuario>>> GetUsuarios()
+        public async Task<ActionResult<IEnumerable<VisualizarUsuario>>> GetAll()
         {
-            return await _context.Usuarios.ToListAsync();
+
+            return await _usuarioService.GetAll();
         }
 
         // GET: api/Usuarios/5
         [HttpGet("{id}")]
         public async Task<VisualizarUsuario> GetUsuario(Guid id)
         {
-            UsuarioService service = new UsuarioService(_context);
-            return await service.Get(id);
+            return await _usuarioService.Get(id);
         }
 
         // PUT: api/Usuarios/5
@@ -45,14 +44,12 @@ namespace UserCRUD_API
         {
             try
             {
-                UsuarioService service = new UsuarioService(_context);
-                await service.Update(id, usuarioCommand);
+                await _usuarioService.Update(id, usuarioCommand);
                 return Created("", null);
             }
             catch (ArgumentNullException ex)
             {
                 return BadRequest(ex.Message);
-                throw;
             }
             catch (InvalidOperationException ex)
             {
@@ -68,8 +65,7 @@ namespace UserCRUD_API
         {
             try
             {
-                UsuarioService service = new UsuarioService(_context);
-                await service.Add(usuario);
+                await _usuarioService.Add(usuario);
                 return Created("", null);
             }
             catch (InvalidOperationException ex)
@@ -84,8 +80,7 @@ namespace UserCRUD_API
         {
             try
             {
-                UsuarioService service = new UsuarioService(_context);
-                await service.Delete(id);
+                await _usuarioService.Delete(id);
                 return Created("", null);
             }
             catch (InvalidOperationException ex)
@@ -93,6 +88,6 @@ namespace UserCRUD_API
                 return BadRequest(ex.Message);
             }
         }
-        
+
     }
 }

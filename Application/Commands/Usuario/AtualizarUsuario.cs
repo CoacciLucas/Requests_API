@@ -1,5 +1,5 @@
 ﻿using System;
-namespace Application.Commands.UsuarioCmd
+namespace Application.Commands
 {
     public class AtualizarUsuario
     {

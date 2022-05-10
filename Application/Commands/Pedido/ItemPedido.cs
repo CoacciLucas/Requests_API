@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Application.Commands.PedidoCmd
+namespace Application.Commands
 {
     public class ItemPedido
     {

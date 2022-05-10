@@ -15,30 +15,24 @@ namespace Infra.Repository
         }
         public async Task Create(Usuario usuario)
         {
-            _context.Usuarios.Add(usuario);
-
-            await _context.SaveChangesAsync();
+            await _context.Usuarios.AddAsync(usuario);
         }
 
         public async Task<Usuario> Get(Guid id)
         {
-            var usuario = await _context.Usuarios.FindAsync(id);
-            if (usuario == null)
-                throw new InvalidOperationException("Usuario não encontrado!");
-
-            return usuario;
+            return await _context.Usuarios.FindAsync(id);
         }
 
         public async Task Update(Usuario usuario)
         {
             _context.Entry(usuario).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
+            await Task.FromResult(_context.Set<Usuario>().Update(usuario));
         }
 
         public async Task Delete(Usuario usuario)
         {
-            _context.Usuarios.Remove(usuario);
-            await _context.SaveChangesAsync();
+            _context.Entry(usuario).State = EntityState.Deleted;
+            await Task.FromResult(_context.Set<Usuario>().Remove(usuario));
         }
 
     }

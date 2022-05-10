@@ -1,18 +1,19 @@
-﻿using Application.Commands.PedidoCmd;
+﻿using Application.Commands;
+using Application.Interfaces;
 using Domain.Entities;
 using Infra;
 using Infra.Repository;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Application.Services
 {
-    public class PedidoService
+    public class PedidoService : IPedidoService
     {
         private readonly PedidoRepository _pedidoRepository;
+        private readonly PedidoService _pedidoService;
         private readonly ProdutoRepository _produtoRepository;
         private readonly UsuarioRepository _usuarioRepository;
         private readonly Context _context;
@@ -21,48 +22,62 @@ namespace Application.Services
         {
             _context = context;
             _pedidoRepository = new PedidoRepository(_context);
+            _pedidoService = new PedidoService(_context);
             _produtoRepository = new ProdutoRepository(_context);
             _usuarioRepository = new UsuarioRepository(_context);
         }
-        public async Task Post(CadastrarPedido pedidoCommand)
-        {
 
-            var pedido = new Pedido(pedidoCommand.IdUsuario);
-            await ValidarUsuario(pedidoCommand.IdUsuario);
-            await _pedidoRepository.Add(pedido);
+        public async Task<List<VisualizarPedido>> GetAll()
+        {
+            var pedidosParaVisualizacao = new List<VisualizarPedido>();
+            var pedidos = await _context.Pedidos.ToListAsync();
+
+            foreach (var pedido in pedidos)
+                pedidosParaVisualizacao.Add(new VisualizarPedido(pedido.ValorTotal, pedido.Status));
+
+            return pedidosParaVisualizacao;
         }
-        public async Task Post(Guid id, ItemPedido pedidoCommand)
+        public async Task Add(CadastrarPedido pedidoCommand)
         {
+            var pedido = new Pedido(pedidoCommand.IdUsuario);
 
-            var produto = await _produtoRepository.Get(pedidoCommand.ProdutoId);
+            await ValidarUsuario(pedidoCommand.IdUsuario);
+
+            await _pedidoRepository.Add(pedido);
+            await _context.SaveChangesAsync();
+        }
+        public async Task Add(Guid id, ItemPedido itemCommand)
+        {
+            var produto = await _produtoRepository.Get(itemCommand.ProdutoId);
             var pedido = await _pedidoRepository.Get(id);
 
-            pedido.Add(produto, pedidoCommand.Quantidade);
-            await _context.SaveChangesAsync();
-            await _pedidoRepository.Update(pedido);
-        }
-        public async Task DeleteItemPedido(Guid id, Guid idItem)
-        {
+            pedido.AdicionarItem(produto, itemCommand.Quantidade);
 
+            await _pedidoRepository.Update(pedido);
+            await _context.SaveChangesAsync();
+        }
+        public async Task DeleteItem(Guid id, Guid idItem)
+        {
             var pedido = await _pedidoRepository.Get(id);
             var itemPedido = await _pedidoRepository.GetItem(idItem);
 
             pedido.Delete(itemPedido);
 
-            await _context.SaveChangesAsync();
             await _pedidoRepository.Update(pedido);
+            await _context.SaveChangesAsync();
         }
-        public async Task<Pedido> GetPedido(Guid id)
+        public async Task<VisualizarPedido> Get(Guid id)
         {
             var pedido = await _pedidoRepository.Get(id);
 
-            return pedido;
+            return new VisualizarPedido(pedido.ValorTotal, pedido.Status);
         }
-        public async Task DeletePedido(Guid id)
+        public async Task Delete(Guid id)
         {
             var pedido = await _pedidoRepository.Get(id);
 
             await _pedidoRepository.Delete(pedido);
+            await _context.SaveChangesAsync();
         }
 
         public async Task ValidarUsuario(Guid id)
@@ -89,10 +104,6 @@ namespace Application.Services
         {
             if (valorTotal < 0)
                 throw new ArgumentNullException("Valor total deve ser maior que ou igual a 0");
-        }
-        private bool PedidoExists(Guid id)
-        {
-            return _context.Pedidos.Any(e => e.Id == id);
         }
     }
 }
