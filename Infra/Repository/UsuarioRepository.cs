@@ -1,11 +1,12 @@
 ﻿using Domain.Entities;
+using Infra.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Threading.Tasks;
 
 namespace Infra.Repository
 {
-    public class UsuarioRepository
+    public class UsuarioRepository : IUsuarioRepository
     {
         protected readonly Context _context;
 

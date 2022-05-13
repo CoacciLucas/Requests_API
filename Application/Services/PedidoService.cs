@@ -2,6 +2,7 @@
 using Application.Interfaces;
 using Domain.Entities;
 using Infra;
+using Infra.Interfaces;
 using Infra.Repository;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -14,17 +15,17 @@ namespace Application.Services
 {
     public class PedidoService : IPedidoService
     {
-        private readonly PedidoRepository _pedidoRepository;
-        private readonly ProdutoRepository _produtoRepository;
-        private readonly UsuarioRepository _usuarioRepository;
+        private readonly IPedidoRepository _pedidoRepository;
+        private readonly IProdutoRepository _produtoRepository;
+        private readonly IUsuarioRepository _usuarioRepository;
         private readonly Context _context;
 
-        public PedidoService(Context context)
+        public PedidoService(Context context, IPedidoRepository pedidoRepository, IProdutoRepository produtoRepository, IUsuarioRepository usuarioRepository)
         {
             _context = context;
-            _pedidoRepository = new PedidoRepository(_context);
-            _produtoRepository = new ProdutoRepository(_context);
-            _usuarioRepository = new UsuarioRepository(_context);
+            _pedidoRepository = pedidoRepository;
+            _produtoRepository = produtoRepository;
+            _usuarioRepository = usuarioRepository;
         }
 
         public async Task<List<VisualizarPedido>> GetAll()

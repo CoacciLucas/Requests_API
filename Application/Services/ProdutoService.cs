@@ -2,7 +2,7 @@
 using Application.Interfaces;
 using Domain.Entities;
 using Infra;
-using Infra.Repository;
+using Infra.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -12,13 +12,13 @@ namespace Application.Services
 {
     public class ProdutoService : IProdutoService
     {
-        private readonly ProdutoRepository _produtoRepository;
+        private readonly IProdutoRepository _produtoRepository;
         private readonly Context _context;
 
-        public ProdutoService(Context context)
+        public ProdutoService(Context context, IProdutoRepository produtoRepository)
         {
             _context = context;
-            _produtoRepository = new ProdutoRepository(_context);
+            _produtoRepository = produtoRepository;
         }
         public async Task<List<VisualizarProduto>> GetAll()
         {

@@ -2,24 +2,24 @@
 using Application.Interfaces;
 using Domain.Entities;
 using Infra;
+using Infra.Interfaces;
 using Infra.Repository;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 namespace Application.Services
 {
     public class UsuarioService : IUsuarioService
     {
-        private readonly UsuarioRepository _usuarioRepository;
+        private readonly IUsuarioRepository _usuarioRepository;
         private readonly Context _context;
 
-        public UsuarioService(Context context)
+        public UsuarioService(Context context, IUsuarioRepository usuarioRepository)
         {
             _context = context;
-            _usuarioRepository = new UsuarioRepository(_context);
+            _usuarioRepository = usuarioRepository;
         }
         public async Task<List<VisualizarUsuario>> GetAll()
         {

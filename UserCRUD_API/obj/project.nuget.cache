@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "icY3FOrnnSoy0jhc8LziXO7PeZefhBPD85p3sxcXAZFSV8gL6uyonXzHsChEbSCVeXuoAAbNSF4FTbpufQgErg==",
+  "dgSpecHash": "pnDNnhq5IyzX0w/NMk13N4oi9fGVJ9dQ1pAEcZP+RYFSLZDA/0z94HCR+UCJg5D2ujxuA8GmQH+BdJD/nEJEdA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Lucas Coacci\\source\\repos\\USERCRUD_API\\UserCRUD_API\\USERCRUD_API.csproj",
+  "projectFilePath": "C:\\Users\\Lucas Coacci\\source\\repos\\UserCRUD_API\\UserCRUD_API\\USERCRUD_API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Lucas Coacci\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512",
     "C:\\Users\\Lucas Coacci\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",

@@ -1,6 +1,7 @@
 using Application.Interfaces;
 using Application.Services;
 using Infra;
+using Infra.Interfaces;
 using Infra.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -32,7 +33,10 @@ namespace UserCRUD_API
             services.AddDbContext<Context>(opt =>
                opt.UseInMemoryDatabase("UserList"));
 
-            
+            services.AddTransient<IUsuarioRepository, UsuarioRepository>();
+            services.AddTransient<IProdutoRepository, ProdutoRepository>();
+
+
             services.AddScoped<UsuarioRepository>();
             services.AddControllers();
             // Register the Swagger generator, defining 1 or more Swagger documents
