@@ -4892,11 +4892,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Lucas Coacci\\source\\repos\\UserCRUD_API\\Infra\\Infra.csproj",
+      "projectUniqueName": "C:\\Users\\Lucas Coacci\\source\\repos\\USERCRUD_API\\Infra\\Infra.csproj",
       "projectName": "Infra",
-      "projectPath": "C:\\Users\\Lucas Coacci\\source\\repos\\UserCRUD_API\\Infra\\Infra.csproj",
+      "projectPath": "C:\\Users\\Lucas Coacci\\source\\repos\\USERCRUD_API\\Infra\\Infra.csproj",
       "packagesPath": "C:\\Users\\Lucas Coacci\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Lucas Coacci\\source\\repos\\UserCRUD_API\\Infra\\obj\\",
+      "outputPath": "C:\\Users\\Lucas Coacci\\source\\repos\\USERCRUD_API\\Infra\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Lucas Coacci\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -4913,8 +4913,8 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\Lucas Coacci\\source\\repos\\UserCRUD_API\\Domain\\Domain.csproj": {
-              "projectPath": "C:\\Users\\Lucas Coacci\\source\\repos\\UserCRUD_API\\Domain\\Domain.csproj"
+            "C:\\Users\\Lucas Coacci\\source\\repos\\USERCRUD_API\\Domain\\Domain.csproj": {
+              "projectPath": "C:\\Users\\Lucas Coacci\\source\\repos\\USERCRUD_API\\Domain\\Domain.csproj"
             }
           }
         }

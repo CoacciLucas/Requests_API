@@ -1,5 +1,7 @@
-using Domain;
+using Application.Interfaces;
+using Application.Services;
 using Infra;
+using Infra.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -8,8 +10,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using System;
-using System.Text.Json;
-using System.Text.Json.Serialization;
 
 namespace UserCRUD_API
 {
@@ -25,8 +25,15 @@ namespace UserCRUD_API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<IUsuarioService, UsuarioService>();
+            services.AddScoped<IProdutoService, ProdutoService>();
+            services.AddScoped<IPedidoService, PedidoService>();
+
             services.AddDbContext<Context>(opt =>
                opt.UseInMemoryDatabase("UserList"));
+
+            
+            services.AddScoped<UsuarioRepository>();
             services.AddControllers();
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>

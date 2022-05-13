@@ -1,4 +1,5 @@
 ﻿using Application.Commands;
+using Application.Interfaces;
 using Application.Services;
 using Domain.Entities;
 using Infra;
@@ -16,26 +17,26 @@ namespace UserCRUD_API.Controllers
     public class PedidosController : ControllerBase
     {
         private readonly Context _context;
-        private readonly PedidoRepository _pedidoRepository;
+        private readonly IPedidoService _pedidoService;
 
-        public PedidosController(Context context)
+        public PedidosController(Context context, IPedidoService pedidoService)
         {
             _context = context;
-            _pedidoRepository = new PedidoRepository(_context);
+            _pedidoService = pedidoService;
         }
 
         // GET: api/Pedidos
         [HttpGet]
-        public async Task<IEnumerable<Pedido>> GetAll()
+        public async Task<IEnumerable<VisualizarPedido>> GetAll()
         {
-            return await _pedidoRepository.GetAll();
+             return await _pedidoService.GetAll();
         }
 
         // GET: api/Pedidos/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Pedido>> GetPedido(Guid id)
+        public async Task<ActionResult<VisualizarPedido>> GetPedido(Guid id)
         {
-            var pedido = await _pedidoRepository.Get(id);
+            var pedido = await _pedidoService.Get(id);
 
             if (pedido == null)
             {
@@ -50,7 +51,7 @@ namespace UserCRUD_API.Controllers
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
 
-        public async Task<IActionResult> PutPedido(Guid id, Pedido pedido)
+        /*public async Task<IActionResult> PutPedido(Guid id, Pedido pedido)
         {
             if (id != pedido.Id)
             {
@@ -65,7 +66,7 @@ namespace UserCRUD_API.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!_pedidoRepository.PedidoExists(id))
+                if (_pedidoService.Get(id) == null)
                 {
                     return NotFound();
                 }
@@ -76,7 +77,7 @@ namespace UserCRUD_API.Controllers
             }
 
             return NoContent();
-        }
+        }*/
 
         // POST: api/Pedidos
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
@@ -87,8 +88,7 @@ namespace UserCRUD_API.Controllers
 
             try
             {
-                PedidoService service = new PedidoService(_context);
-                await service.Add(pedido);
+                await _pedidoService.Add(pedido);
                 return Created("", null);
             }
             catch (InvalidOperationException ex)
@@ -103,24 +103,17 @@ namespace UserCRUD_API.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<Pedido>> Delete(Guid id)
         {
-            var pedido = await _context.Pedidos.FindAsync(id);
-            if (pedido == null)
-            {
-                return NotFound();
-            }
-
-            _context.Pedidos.Remove(pedido);
+            await _pedidoService.Delete(id);
             await _context.SaveChangesAsync();
 
-            return pedido;
+            return Created("", null);
         }
         [HttpPost("{id}/itens")]
         public async Task<ActionResult> PostItemPedido(Guid id, ItemPedido pedidoCommand)
         {
             try
             {
-                PedidoService service = new PedidoService(_context);
-                await service.Add(id, pedidoCommand);
+                await _pedidoService.AdicionarItem(id, pedidoCommand);
                 return Created("", null);
             }
             catch (InvalidOperationException ex)
@@ -133,8 +126,7 @@ namespace UserCRUD_API.Controllers
         {
             try
             {
-                PedidoService service = new PedidoService(_context);
-                await service.DeleteItem(id, idItem);
+                await _pedidoService.DeleteItem(id, idItem);
                 return Created("", null);
             }
             catch (InvalidOperationException ex)

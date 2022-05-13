@@ -23,13 +23,13 @@
     "warningsAsErrors": false,
     "optimize": false,
     "keyFile": "",
-    "emitEntryPoint": true,
+    "emitEntryPoint": false,
     "xmlDoc": false,
     "debugType": "portable"
   },
   "targets": {
     ".NETCoreApp,Version=v3.1": {
-      "UserCRUD_API/1.0.0": {
+      "USERCRUD_API/1.0.0": {
         "dependencies": {
           "Application": "1.0.0",
           "Domain": "1.0.0",
@@ -318,10 +318,10 @@
           "WindowsBase": "4.0.0.0"
         },
         "runtime": {
-          "UserCRUD_API.dll": {}
+          "USERCRUD_API.dll": {}
         },
         "compile": {
-          "UserCRUD_API.dll": {}
+          "USERCRUD_API.dll": {}
         }
       },
       "EntityFramework/6.4.4": {
@@ -4182,7 +4182,7 @@
     }
   },
   "libraries": {
-    "UserCRUD_API/1.0.0": {
+    "USERCRUD_API/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

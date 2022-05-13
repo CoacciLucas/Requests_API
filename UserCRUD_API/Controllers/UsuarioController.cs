@@ -1,4 +1,5 @@
 ﻿using Application.Commands;
+using Application.Interfaces;
 using Application.Services;
 using Infra;
 using Microsoft.AspNetCore.Mvc;
@@ -12,13 +13,11 @@ namespace UserCRUD_API
     [ApiController]
     public class UsuariosController : ControllerBase
     {
-        private readonly Context _context;
-        private readonly UsuarioService _usuarioService;
+        private readonly IUsuarioService _usuarioService;
 
-        public UsuariosController(Context context)
+        public UsuariosController(IUsuarioService usuarioService)
         {
-            _context = context;
-            _usuarioService = new UsuarioService(_context);
+            _usuarioService = usuarioService;
         }
 
         // GET: api/Usuarios
@@ -45,6 +44,7 @@ namespace UserCRUD_API
             try
             {
                 await _usuarioService.Update(id, usuarioCommand);
+
                 return Created("", null);
             }
             catch (ArgumentNullException ex)
@@ -66,6 +66,7 @@ namespace UserCRUD_API
             try
             {
                 await _usuarioService.Add(usuario);
+
                 return Created("", null);
             }
             catch (InvalidOperationException ex)
@@ -81,6 +82,7 @@ namespace UserCRUD_API
             try
             {
                 await _usuarioService.Delete(id);
+
                 return Created("", null);
             }
             catch (InvalidOperationException ex)

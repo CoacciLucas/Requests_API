@@ -1,4 +1,5 @@
 ﻿using Application.Commands;
+using Application.Interfaces;
 using Application.Services;
 using Infra;
 using Microsoft.AspNetCore.Mvc;
@@ -12,13 +13,11 @@ namespace UserCRUD_API
     [ApiController]
     public class ProdutoController : ControllerBase
     {
-        private readonly Context _context;
-        private readonly ProdutoService _produtoService;
+        private readonly IProdutoService _produtoService;
 
-        public ProdutoController(Context context)
+        public ProdutoController(IProdutoService produtoService)
         {
-            _context = context;
-            _produtoService = new ProdutoService(_context);
+            _produtoService = produtoService;
         }
 
         // GET: api/Produtos

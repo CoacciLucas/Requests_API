@@ -26,9 +26,16 @@ namespace Application.Services
             var produtos = await _context.Produtos.ToListAsync();
 
             foreach (var produto in produtos)
-                produtosParaVisualizacao.Add(new VisualizarProduto(produto.Descricao, produto.Valor, produto.QuantidadeNoEstoque));
+                produtosParaVisualizacao.Add(new VisualizarProduto(produto.Id, produto.Descricao, produto.Valor, produto.QuantidadeNoEstoque));
 
             return produtosParaVisualizacao;
+        }
+        public async Task<VisualizarProduto> Get(Guid id)
+        {
+            var produto = await _produtoRepository.Get(id);
+            var visualizarProduto = new VisualizarProduto(produto.Id, produto.Descricao, produto.Valor, produto.QuantidadeNoEstoque);
+
+            return visualizarProduto;
         }
         public async Task Add(CadastrarProduto produtoCommand)
         {
@@ -36,13 +43,6 @@ namespace Application.Services
 
             await _produtoRepository.Create(produto);
             await _context.SaveChangesAsync();
-        }
-        public async Task<VisualizarProduto> Get(Guid id)
-        {
-            var produto = await _produtoRepository.Get(id);
-            var visualizarProduto = new VisualizarProduto(produto.Descricao, produto.Valor, produto.QuantidadeNoEstoque);
-
-            return visualizarProduto;
         }
         public async Task Update(Guid id, AtualizarProduto produtoCommand)
         {
@@ -72,41 +72,6 @@ namespace Application.Services
             return _context.Produtos.Any(e => e.Id == id);
         }
 
-        public void ValidarProduto(Produto produto)
-        {
-            ValidarDescricao(produto.Descricao);
-            ValidarValor(produto.Valor);
-            ValidarQuantidadeNoEstoque(produto.QuantidadeNoEstoque);
-            ValidarAtivo(produto.Ativo);
-        }
-        private void ValidarDescricao(string descricao)
-        {
-            if (string.IsNullOrEmpty(descricao) || descricao.Length > 200)
-            {
-                throw new InvalidOperationException("Descricao invalida!");
-            }
-        }
 
-        private void ValidarValor(decimal valor)
-        {
-            if (valor <= 0 || valor.Equals(null))
-            {
-                throw new InvalidOperationException("Valor invalido!");
-            }
-        }
-
-        private void ValidarAtivo(bool ativo)
-        {
-            if (ativo != true && ativo != false)
-                throw new InvalidOperationException("O ativo deve ser apenas true or false!");
-        }
-
-        private void ValidarQuantidadeNoEstoque(int quantidadeNoEstoque)
-        {
-            if (!(quantidadeNoEstoque % 1 == 0) || quantidadeNoEstoque < 0)
-            {
-                throw new InvalidOperationException("Quantidade no estoque invalida!");
-            }
-        }
     }
 }

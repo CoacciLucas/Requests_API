@@ -6,14 +6,15 @@ using Infra.Repository;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using static Application.Commands.VisualizarPedido;
 
 namespace Application.Services
 {
     public class PedidoService : IPedidoService
     {
         private readonly PedidoRepository _pedidoRepository;
-        private readonly PedidoService _pedidoService;
         private readonly ProdutoRepository _produtoRepository;
         private readonly UsuarioRepository _usuarioRepository;
         private readonly Context _context;
@@ -22,7 +23,6 @@ namespace Application.Services
         {
             _context = context;
             _pedidoRepository = new PedidoRepository(_context);
-            _pedidoService = new PedidoService(_context);
             _produtoRepository = new ProdutoRepository(_context);
             _usuarioRepository = new UsuarioRepository(_context);
         }
@@ -30,23 +30,32 @@ namespace Application.Services
         public async Task<List<VisualizarPedido>> GetAll()
         {
             var pedidosParaVisualizacao = new List<VisualizarPedido>();
-            var pedidos = await _context.Pedidos.ToListAsync();
+            var pedidos = await _context.Pedidos.Include(x => x.Itens).ToListAsync();
 
             foreach (var pedido in pedidos)
-                pedidosParaVisualizacao.Add(new VisualizarPedido(pedido.ValorTotal, pedido.Status));
+                CriarPedidosParaVisualizacao(pedidosParaVisualizacao, pedido);
 
             return pedidosParaVisualizacao;
         }
-        public async Task Add(CadastrarPedido pedidoCommand)
+
+        private static void CriarPedidosParaVisualizacao(List<VisualizarPedido> pedidosParaVisualizacao, Pedido pedido)
         {
-            var pedido = new Pedido(pedidoCommand.IdUsuario);
-
-            await ValidarUsuario(pedidoCommand.IdUsuario);
-
-            await _pedidoRepository.Add(pedido);
-            await _context.SaveChangesAsync();
+            var pedidoParaVisualizacao = new VisualizarPedido(pedido.Id, pedido.ValorTotal, pedido.Status);
+            foreach (var item in pedido.Itens)
+                pedidoParaVisualizacao.AdicionarItem(item.Id, item.Descricao, item.Quantidade);
+            pedidosParaVisualizacao.Add(pedidoParaVisualizacao);
         }
-        public async Task Add(Guid id, ItemPedido itemCommand)
+
+        public async Task<VisualizarPedido> Get(Guid id)
+        {
+            var pedido = await _pedidoRepository.Get(id);
+            var pedidoParaVisualizacao = new VisualizarPedido(pedido.Id, pedido.ValorTotal, pedido.Status);
+            foreach (var item in pedido.Itens)
+                pedidoParaVisualizacao.AdicionarItem(item.Id, item.Descricao, item.Quantidade);
+
+            return pedidoParaVisualizacao;
+        }
+        public async Task AdicionarItem(Guid id, ItemPedido itemCommand)
         {
             var produto = await _produtoRepository.Get(itemCommand.ProdutoId);
             var pedido = await _pedidoRepository.Get(id);
@@ -54,6 +63,14 @@ namespace Application.Services
             pedido.AdicionarItem(produto, itemCommand.Quantidade);
 
             await _pedidoRepository.Update(pedido);
+            await _context.SaveChangesAsync();
+        }
+        public async Task Add(CadastrarPedido pedidoCommand)
+        {
+            var pedido = new Pedido(pedidoCommand.IdUsuario);
+
+            await ValidarUsuario(pedidoCommand.IdUsuario);
+            await _pedidoRepository.Add(pedido);
             await _context.SaveChangesAsync();
         }
         public async Task DeleteItem(Guid id, Guid idItem)
@@ -66,12 +83,7 @@ namespace Application.Services
             await _pedidoRepository.Update(pedido);
             await _context.SaveChangesAsync();
         }
-        public async Task<VisualizarPedido> Get(Guid id)
-        {
-            var pedido = await _pedidoRepository.Get(id);
 
-            return new VisualizarPedido(pedido.ValorTotal, pedido.Status);
-        }
         public async Task Delete(Guid id)
         {
             var pedido = await _pedidoRepository.Get(id);
@@ -83,27 +95,9 @@ namespace Application.Services
         public async Task ValidarUsuario(Guid id)
         {
             var usuario = await _usuarioRepository.Get(id);
+
             if (usuario == null)
                 throw new ArgumentNullException("Usuário inválido");
-        }
-        public void ValidarPedido(Pedido pedido)
-        {
-            ValidarStatus(pedido.Status);
-            ValidarValorTotal(pedido.ValorTotal);
-        }
-        public void ValidarStatus(Status status)
-        {
-            bool success = Enum.IsDefined(typeof(Status), status);
-            if (!success)
-            {
-                throw new ArgumentNullException("Status invalido!");
-            }
-        }
-
-        public void ValidarValorTotal(decimal valorTotal)
-        {
-            if (valorTotal < 0)
-                throw new ArgumentNullException("Valor total deve ser maior que ou igual a 0");
         }
     }
 }

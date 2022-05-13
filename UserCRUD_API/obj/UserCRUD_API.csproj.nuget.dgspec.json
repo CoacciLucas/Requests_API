@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Lucas Coacci\\source\\repos\\UserCRUD_API\\UserCRUD_API\\UserCRUD_API.csproj": {}
+    "C:\\Users\\Lucas Coacci\\source\\repos\\USERCRUD_API\\UserCRUD_API\\USERCRUD_API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Lucas Coacci\\source\\repos\\UserCRUD_API\\Application\\Application.csproj": {
+    "C:\\Users\\Lucas Coacci\\source\\repos\\USERCRUD_API\\Application\\Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Lucas Coacci\\source\\repos\\UserCRUD_API\\Application\\Application.csproj",
+        "projectUniqueName": "C:\\Users\\Lucas Coacci\\source\\repos\\USERCRUD_API\\Application\\Application.csproj",
         "projectName": "Application",
-        "projectPath": "C:\\Users\\Lucas Coacci\\source\\repos\\UserCRUD_API\\Application\\Application.csproj",
+        "projectPath": "C:\\Users\\Lucas Coacci\\source\\repos\\USERCRUD_API\\Application\\Application.csproj",
         "packagesPath": "C:\\Users\\Lucas Coacci\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Lucas Coacci\\source\\repos\\UserCRUD_API\\Application\\obj\\",
+        "outputPath": "C:\\Users\\Lucas Coacci\\source\\repos\\USERCRUD_API\\Application\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Lucas Coacci\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,11 +28,11 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\Lucas Coacci\\source\\repos\\UserCRUD_API\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\Lucas Coacci\\source\\repos\\UserCRUD_API\\Domain\\Domain.csproj"
+              "C:\\Users\\Lucas Coacci\\source\\repos\\USERCRUD_API\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\Lucas Coacci\\source\\repos\\USERCRUD_API\\Domain\\Domain.csproj"
               },
-              "C:\\Users\\Lucas Coacci\\source\\repos\\UserCRUD_API\\Infra\\Infra.csproj": {
-                "projectPath": "C:\\Users\\Lucas Coacci\\source\\repos\\UserCRUD_API\\Infra\\Infra.csproj"
+              "C:\\Users\\Lucas Coacci\\source\\repos\\USERCRUD_API\\Infra\\Infra.csproj": {
+                "projectPath": "C:\\Users\\Lucas Coacci\\source\\repos\\USERCRUD_API\\Infra\\Infra.csproj"
               }
             }
           }
@@ -87,14 +87,14 @@
         }
       }
     },
-    "C:\\Users\\Lucas Coacci\\source\\repos\\UserCRUD_API\\Domain\\Domain.csproj": {
+    "C:\\Users\\Lucas Coacci\\source\\repos\\USERCRUD_API\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Lucas Coacci\\source\\repos\\UserCRUD_API\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Lucas Coacci\\source\\repos\\USERCRUD_API\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\Users\\Lucas Coacci\\source\\repos\\UserCRUD_API\\Domain\\Domain.csproj",
+        "projectPath": "C:\\Users\\Lucas Coacci\\source\\repos\\USERCRUD_API\\Domain\\Domain.csproj",
         "packagesPath": "C:\\Users\\Lucas Coacci\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Lucas Coacci\\source\\repos\\UserCRUD_API\\Domain\\obj\\",
+        "outputPath": "C:\\Users\\Lucas Coacci\\source\\repos\\USERCRUD_API\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Lucas Coacci\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -163,14 +163,14 @@
         }
       }
     },
-    "C:\\Users\\Lucas Coacci\\source\\repos\\UserCRUD_API\\Infra\\Infra.csproj": {
+    "C:\\Users\\Lucas Coacci\\source\\repos\\USERCRUD_API\\Infra\\Infra.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Lucas Coacci\\source\\repos\\UserCRUD_API\\Infra\\Infra.csproj",
+        "projectUniqueName": "C:\\Users\\Lucas Coacci\\source\\repos\\USERCRUD_API\\Infra\\Infra.csproj",
         "projectName": "Infra",
-        "projectPath": "C:\\Users\\Lucas Coacci\\source\\repos\\UserCRUD_API\\Infra\\Infra.csproj",
+        "projectPath": "C:\\Users\\Lucas Coacci\\source\\repos\\USERCRUD_API\\Infra\\Infra.csproj",
         "packagesPath": "C:\\Users\\Lucas Coacci\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Lucas Coacci\\source\\repos\\UserCRUD_API\\Infra\\obj\\",
+        "outputPath": "C:\\Users\\Lucas Coacci\\source\\repos\\USERCRUD_API\\Infra\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Lucas Coacci\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -187,8 +187,8 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\Lucas Coacci\\source\\repos\\UserCRUD_API\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\Lucas Coacci\\source\\repos\\UserCRUD_API\\Domain\\Domain.csproj"
+              "C:\\Users\\Lucas Coacci\\source\\repos\\USERCRUD_API\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\Lucas Coacci\\source\\repos\\USERCRUD_API\\Domain\\Domain.csproj"
               }
             }
           }
@@ -243,14 +243,14 @@
         }
       }
     },
-    "C:\\Users\\Lucas Coacci\\source\\repos\\UserCRUD_API\\UserCRUD_API\\UserCRUD_API.csproj": {
+    "C:\\Users\\Lucas Coacci\\source\\repos\\USERCRUD_API\\UserCRUD_API\\USERCRUD_API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Lucas Coacci\\source\\repos\\UserCRUD_API\\UserCRUD_API\\UserCRUD_API.csproj",
-        "projectName": "UserCRUD_API",
-        "projectPath": "C:\\Users\\Lucas Coacci\\source\\repos\\UserCRUD_API\\UserCRUD_API\\UserCRUD_API.csproj",
+        "projectUniqueName": "C:\\Users\\Lucas Coacci\\source\\repos\\USERCRUD_API\\UserCRUD_API\\USERCRUD_API.csproj",
+        "projectName": "USERCRUD_API",
+        "projectPath": "C:\\Users\\Lucas Coacci\\source\\repos\\USERCRUD_API\\UserCRUD_API\\USERCRUD_API.csproj",
         "packagesPath": "C:\\Users\\Lucas Coacci\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Lucas Coacci\\source\\repos\\UserCRUD_API\\UserCRUD_API\\obj\\",
+        "outputPath": "C:\\Users\\Lucas Coacci\\source\\repos\\USERCRUD_API\\UserCRUD_API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Lucas Coacci\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -267,14 +267,14 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\Lucas Coacci\\source\\repos\\UserCRUD_API\\Application\\Application.csproj": {
-                "projectPath": "C:\\Users\\Lucas Coacci\\source\\repos\\UserCRUD_API\\Application\\Application.csproj"
+              "C:\\Users\\Lucas Coacci\\source\\repos\\USERCRUD_API\\Application\\Application.csproj": {
+                "projectPath": "C:\\Users\\Lucas Coacci\\source\\repos\\USERCRUD_API\\Application\\Application.csproj"
               },
-              "C:\\Users\\Lucas Coacci\\source\\repos\\UserCRUD_API\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\Lucas Coacci\\source\\repos\\UserCRUD_API\\Domain\\Domain.csproj"
+              "C:\\Users\\Lucas Coacci\\source\\repos\\USERCRUD_API\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\Lucas Coacci\\source\\repos\\USERCRUD_API\\Domain\\Domain.csproj"
               },
-              "C:\\Users\\Lucas Coacci\\source\\repos\\UserCRUD_API\\Infra\\Infra.csproj": {
-                "projectPath": "C:\\Users\\Lucas Coacci\\source\\repos\\UserCRUD_API\\Infra\\Infra.csproj"
+              "C:\\Users\\Lucas Coacci\\source\\repos\\USERCRUD_API\\Infra\\Infra.csproj": {
+                "projectPath": "C:\\Users\\Lucas Coacci\\source\\repos\\USERCRUD_API\\Infra\\Infra.csproj"
               }
             }
           }

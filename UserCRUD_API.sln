@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32407.343
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserCRUD_API", "UserCRUD_API\UserCRUD_API.csproj", "{8CBA37B1-18AD-4629-913E-A45D15BFEDA2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "USERCRUD_API", "UserCRUD_API\USERCRUD_API.csproj", "{8CBA37B1-18AD-4629-913E-A45D15BFEDA2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0 - Presentation", "0 - Presentation", "{75E762CF-5BA9-46EB-95FE-B77B27914E2E}"
 EndProject

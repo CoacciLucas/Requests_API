@@ -12,7 +12,7 @@ namespace Domain.Entities
             Id = Guid.NewGuid();
             IdUsuario = idUsuario;
             Status = Status.Criado;
-            /*Chamar o Validar()*/
+            Validar();
         }
         protected Pedido() { }
         public Guid Id { get; private set; }
@@ -34,6 +34,25 @@ namespace Domain.Entities
         public void RemoverItem(Item item)
         {
             _itens.Remove(item);
+        }
+
+        public void Validar()
+        {
+            ValidarStatus(Status);
+            ValidarValorTotal(ValorTotal);
+        }
+        public void ValidarStatus(Status status)
+        {
+            bool success = Enum.IsDefined(typeof(Status), status);
+            if (!success)
+                throw new ArgumentNullException("Status invalido!");
+            
+        }
+
+        public void ValidarValorTotal(decimal valorTotal)
+        {
+            if (valorTotal < 0)
+                throw new ArgumentNullException("Valor total deve ser maior que ou igual a 0");
         }
     }
 }

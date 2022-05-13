@@ -9,7 +9,7 @@ namespace Application.Interfaces
     {
         Task<List<VisualizarPedido>> GetAll();
         Task Add(CadastrarPedido pedido);
-        Task Add(Guid id, ItemPedido item);
+        Task AdicionarItem(Guid id, ItemPedido item);
         Task DeleteItem(Guid id, Guid idItem);
         Task<VisualizarPedido> Get(Guid id);
         Task Delete(Guid id);
