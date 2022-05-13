@@ -35,6 +35,7 @@ namespace UserCRUD_API
 
             services.AddTransient<IUsuarioRepository, UsuarioRepository>();
             services.AddTransient<IProdutoRepository, ProdutoRepository>();
+            services.AddTransient<IPedidoRepository, PedidoRepository>();
 
 
             services.AddScoped<UsuarioRepository>();
