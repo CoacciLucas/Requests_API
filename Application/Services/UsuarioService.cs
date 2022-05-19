@@ -27,24 +27,23 @@ namespace Application.Services
             var usuarios = await _context.Usuarios.ToListAsync();
 
             foreach (var usuario in usuarios)
-                usuariosParaVisualizacao.Add(new VisualizarUsuario(usuario.Id, usuario.Nome, usuario.Email, usuario.Cpf, usuario.Ativo, usuario.DataNascimento));
+                usuariosParaVisualizacao.Add(EntityToVO(usuario));
 
             return usuariosParaVisualizacao;
-        }
-        public async Task Add(CadastrarUsuario usuarioCommand)
-        {
-            var usuario = new Usuario(usuarioCommand.Nome, usuarioCommand.Email, usuarioCommand.Cpf, usuarioCommand.DataNascimento);
-            await _usuarioRepository.Create(usuario);
-            await _context.SaveChangesAsync();
         }
         public async Task<VisualizarUsuario> Get(Guid id)
         {
             var usuario = await _usuarioRepository.Get(id);
-            var viewUsuario = new VisualizarUsuario(usuario.Id, usuario.Nome, usuario.Email, usuario.Cpf, usuario.Ativo, usuario.DataNascimento);
 
-            return viewUsuario;
+            return usuario == null ? null : EntityToVO(usuario);
+                
         }
-
+        public async Task Add(CadastrarUsuario usuarioCommand)
+        {
+            var usuario = new Usuario(usuarioCommand.Nome, usuarioCommand.Email, usuarioCommand.Cpf, usuarioCommand.DataNascimento);
+            await _usuarioRepository.AddAsync(usuario);
+            await _context.SaveChangesAsync();
+        }
         public async Task Update(Guid id, AtualizarUsuario usuarioCommand)
         {
             if (!UsuarioExists(id))
@@ -52,17 +51,26 @@ namespace Application.Services
 
             var usuario = await _usuarioRepository.Get(id);
 
-            await _usuarioRepository.Update(usuario);
+            usuario.DefinirNome(usuarioCommand.Nome);
+            usuario.DefinirCpf(usuarioCommand.Cpf);
+            usuario.DefinirDataNascimento(usuarioCommand.DataNascimento);
+            usuario.DefinirAtivo(usuarioCommand.Ativo);
+            usuario.Validar();
+            
+            await _usuarioRepository.UpdateAsync(usuario);
             await _context.SaveChangesAsync();
         }
         public async Task Delete(Guid id)
         {
             var usuario = await _usuarioRepository.Get(id);
 
-            await _usuarioRepository.Delete(usuario);
+            await _usuarioRepository.DeleteAsync(usuario);
             await _context.SaveChangesAsync();
         }
-
+        private static VisualizarUsuario EntityToVO(Usuario usuario)
+        {
+            return new VisualizarUsuario(usuario.Id, usuario.Nome, usuario.Email, usuario.Cpf, usuario.Ativo, usuario.DataNascimento);
+        }
         private bool UsuarioExists(Guid id)
         {
             return _context.Usuarios.Any(e => e.Id == id);

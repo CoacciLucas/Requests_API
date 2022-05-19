@@ -41,20 +41,12 @@ namespace Application.Services
 
         private static void CriarPedidosParaVisualizacao(List<VisualizarPedido> pedidosParaVisualizacao, Pedido pedido)
         {
-            var pedidoParaVisualizacao = new VisualizarPedido(pedido.Id, pedido.ValorTotal, pedido.Status);
-            foreach (var item in pedido.Itens)
-                pedidoParaVisualizacao.AdicionarItem(item.Id, item.Descricao, item.Quantidade);
-            pedidosParaVisualizacao.Add(pedidoParaVisualizacao);
+            pedidosParaVisualizacao.Add(EntityToVO(pedido));
         }
 
         public async Task<VisualizarPedido> Get(Guid id)
         {
-            var pedido = await _pedidoRepository.Get(id);
-            var pedidoParaVisualizacao = new VisualizarPedido(pedido.Id, pedido.ValorTotal, pedido.Status);
-            foreach (var item in pedido.Itens)
-                pedidoParaVisualizacao.AdicionarItem(item.Id, item.Descricao, item.Quantidade);
-
-            return pedidoParaVisualizacao;
+           return EntityToVO(await _pedidoRepository.Get(id));
         }
         public async Task AdicionarItem(Guid id, ItemPedido itemCommand)
         {
@@ -62,8 +54,9 @@ namespace Application.Services
             var pedido = await _pedidoRepository.Get(id);
 
             pedido.AdicionarItem(produto, itemCommand.Quantidade);
+            pedido.Validar();
 
-            await _pedidoRepository.Update(pedido);
+            await _pedidoRepository.UpdateAsync(pedido);
             await _context.SaveChangesAsync();
         }
         public async Task Add(CadastrarPedido pedidoCommand)
@@ -71,17 +64,16 @@ namespace Application.Services
             var pedido = new Pedido(pedidoCommand.IdUsuario);
 
             await ValidarUsuario(pedidoCommand.IdUsuario);
-            await _pedidoRepository.Add(pedido);
+            await _pedidoRepository.AddAsync(pedido);
             await _context.SaveChangesAsync();
         }
         public async Task DeleteItem(Guid id, Guid idItem)
         {
             var pedido = await _pedidoRepository.Get(id);
-            var itemPedido = await _pedidoRepository.GetItem(idItem);
 
-            pedido.RemoverItem(itemPedido);
+            pedido.RemoverItem(idItem);
 
-            await _pedidoRepository.Update(pedido);
+            await _pedidoRepository.UpdateAsync(pedido);
             await _context.SaveChangesAsync();
         }
 
@@ -89,16 +81,22 @@ namespace Application.Services
         {
             var pedido = await _pedidoRepository.Get(id);
 
-            await _pedidoRepository.Delete(pedido);
+            await _pedidoRepository.DeleteAsync(pedido);
             await _context.SaveChangesAsync();
         }
-
+        private static VisualizarPedido EntityToVO(Pedido pedido)
+        {
+            var pedidoParaVisualizacao = new VisualizarPedido(pedido.Id, pedido.ValorTotal, pedido.Status);
+            foreach (var item in pedido.Itens)
+                pedidoParaVisualizacao.AdicionarItem(item.Id, item.Descricao, item.Quantidade);
+            return pedidoParaVisualizacao;
+        }
         public async Task ValidarUsuario(Guid id)
         {
             var usuario = await _usuarioRepository.Get(id);
 
             if (usuario == null)
-                throw new ArgumentNullException("Usuário inválido");
+                throw new InvalidOperationException("Usuário inválido");
         }
     }
 }

@@ -42,7 +42,7 @@ namespace Domain.Entities
             Ativo = ativo;
         }
 
-        private void Validar()
+        public void Validar()
         {
             ValidarCpf(Cpf);
             ValidarEmail(Email);
@@ -54,37 +54,53 @@ namespace Domain.Entities
         {
 
             int indexArr = email.IndexOf('@');
-            if (indexArr > 0)
-            {
-                int indexDot = email.IndexOf('.', indexArr);
-                if (indexDot - 1 > indexArr)
-                {
-                    if (indexDot + 1 < email.Length)
-                    {
-                        string indexDot2 = email.Substring(indexDot + 1, 1);
-                        if (indexDot2 != ".")
-                        {
-
-                        }
-                        else
-                        {
-                            throw new InvalidOperationException("Email Inválido");
-                        }
-
-                    }
-                    else
-                    {
-                        throw new InvalidOperationException("Email Inválido");
-                    }
-                }
-                else
-                {
-                    throw new InvalidOperationException("Email Inválido");
-                }
-            }
-            else
+            if (!(indexArr > 0))
                 throw new InvalidOperationException("Email Inválido");
 
+            int indexDot = email.IndexOf('.', indexArr);
+            if (!(indexDot - 1 > indexArr))
+                throw new InvalidOperationException("Email Inválido");
+
+            if (!(indexDot + 1 < email.Length))
+                throw new InvalidOperationException("Email Inválido");
+
+            string indexDot2 = email.Substring(indexDot + 1, 1);
+            if (!(indexDot2 != "."))
+                throw new InvalidOperationException("Email Inválido");
+
+
+
+            /* if (indexArr > 0)
+             {
+                 int indexDot = email.IndexOf('.', indexArr);
+                 if (indexDot - 1 > indexArr)
+                 {
+                     if (indexDot + 1 < email.Length)
+                     {
+                         string indexDot2 = email.Substring(indexDot + 1, 1);
+                         if (indexDot2 != ".")
+                         {
+
+                         }
+                         else
+                         {
+                             throw new InvalidOperationException("Email Inválido");
+                         }
+
+                     }
+                     else
+                     {
+                         throw new InvalidOperationException("Email Inválido");
+                     }
+                 }
+                 else
+                 {
+                     throw new InvalidOperationException("Email Inválido");
+                 }
+             }
+             else
+                 throw new InvalidOperationException("Email Inválido");
+            */
         }
 
         private void ValidarNome(string nome)

@@ -26,13 +26,16 @@ namespace Domain.Entities
         {
             if (_itens.Any(x => x.ProdutoId == produto.Id))
                 throw new InvalidOperationException("O produto ja existe na lista");
-
+            Validar();
             _itens.Add(new Item(produto, this, quantidade));
 
             ValorTotal += produto.Valor * quantidade;
         }
-        public void RemoverItem(Item item)
+        public void RemoverItem(Guid idItem)
         {
+            var item = _itens.FirstOrDefault(x => x.Id == idItem);
+            if (item == null)
+                throw new InvalidOperationException("Item nao encontrado");
             _itens.Remove(item);
         }
 
@@ -45,14 +48,14 @@ namespace Domain.Entities
         {
             bool success = Enum.IsDefined(typeof(Status), status);
             if (!success)
-                throw new ArgumentNullException("Status invalido!");
+                throw new InvalidOperationException("Status invalido!");
             
         }
 
         public void ValidarValorTotal(decimal valorTotal)
         {
             if (valorTotal < 0)
-                throw new ArgumentNullException("Valor total deve ser maior que ou igual a 0");
+                throw new InvalidOperationException("Valor total deve ser maior que ou igual a 0");
         }
     }
 }

@@ -26,22 +26,20 @@ namespace Application.Services
             var produtos = await _context.Produtos.ToListAsync();
 
             foreach (var produto in produtos)
-                produtosParaVisualizacao.Add(new VisualizarProduto(produto.Id, produto.Descricao, produto.Valor, produto.QuantidadeNoEstoque));
+                produtosParaVisualizacao.Add(EntityToVO(produto));
 
             return produtosParaVisualizacao;
         }
+
         public async Task<VisualizarProduto> Get(Guid id)
         {
-            var produto = await _produtoRepository.Get(id);
-            var visualizarProduto = new VisualizarProduto(produto.Id, produto.Descricao, produto.Valor, produto.QuantidadeNoEstoque);
-
-            return visualizarProduto;
+            return EntityToVO(await _produtoRepository.Get(id));
         }
         public async Task Add(CadastrarProduto produtoCommand)
         {
             var produto = new Produto(produtoCommand.Descricao, produtoCommand.Valor, produtoCommand.QuantidadeNoEstoque);
 
-            await _produtoRepository.Create(produto);
+            await _produtoRepository.AddAsync(produto);
             await _context.SaveChangesAsync();
         }
         public async Task Update(Guid id, AtualizarProduto produtoCommand)
@@ -55,16 +53,21 @@ namespace Application.Services
             produto.DefinirValor(produtoCommand.Valor);
             produto.DefinirAtivo(produtoCommand.Ativo);
             produto.DefinirQuantidadeNoEstoque(produtoCommand.QuantidadeNoEstoque);
+            produto.Validar();
 
-            await _produtoRepository.Update(produto);
+            await _produtoRepository.UpdateAsync(produto);
             await _context.SaveChangesAsync();
         }
         public async Task Delete(Guid id)
         {
             var produto = await _produtoRepository.Get(id);
 
-            await _produtoRepository.Delete(produto);
+            await _produtoRepository.DeleteAsync(produto);
             await _context.SaveChangesAsync();
+        }
+        private static VisualizarProduto EntityToVO(Produto produto)
+        {
+            return new VisualizarProduto(produto.Id, produto.Descricao, produto.Valor, produto.QuantidadeNoEstoque);
         }
 
         private bool ProdutoExists(Guid id)

@@ -32,14 +32,14 @@ namespace Domain.Entities
         private void ValidarQuantidade(int quantidade)
         {
             if (quantidade < 0)
-                throw new ArgumentNullException("Quantidade invalida! (Não pode ser menor que 0)");
+                throw new InvalidOperationException("Quantidade invalida! (Não pode ser menor que 0)");
 
         }
 
         private void ValidarDescricao(string descricao)
         {
             if (string.IsNullOrEmpty(descricao) || descricao.Length > 200)
-                throw new ArgumentNullException("Descricao inválida");
+                throw new InvalidOperationException("Descricao inválida");
         }
     }
 }

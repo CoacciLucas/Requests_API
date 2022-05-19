@@ -121,7 +121,7 @@ namespace UserCRUD_API.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        [HttpDelete("{id}/itens")]
+        [HttpDelete("{id}/itens/{idItens}")]
         public async Task<ActionResult> DeleteItem(Guid id, Guid idItem)
         {
             try

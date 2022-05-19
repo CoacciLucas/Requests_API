@@ -37,8 +37,6 @@ namespace UserCRUD_API
             services.AddTransient<IProdutoRepository, ProdutoRepository>();
             services.AddTransient<IPedidoRepository, PedidoRepository>();
 
-
-            services.AddScoped<UsuarioRepository>();
             services.AddControllers();
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>

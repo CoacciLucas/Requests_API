@@ -8,17 +8,11 @@ using System.Threading.Tasks;
 
 namespace Infra.Repository
 {
-    public class ProdutoRepository : IProdutoRepository
+    public class ProdutoRepository : Repository<Produto>, IProdutoRepository
     {
-        protected readonly Context _context;
+        public ProdutoRepository(Context context) : base(context)
+        {
 
-        public ProdutoRepository(Context context)
-        {
-            _context = context;
-        }
-        public async Task Create(Produto produto)
-        {
-            await _context.Produtos.AddAsync(produto);
         }
 
         public async Task<Produto> Get(Guid id)
@@ -28,18 +22,9 @@ namespace Infra.Repository
                 throw new InvalidOperationException("Produto não encontrado!");
             return produto;
         }
-
-        public async Task Update(Produto produto)
+        public async Task<IEnumerable<Produto>> GetAll()
         {
-            _context.Entry(produto).State = EntityState.Modified;
-            await Task.FromResult(_context.Set<Produto>().Update(produto));
-        }
-
-        public async Task Delete(Produto produto)
-        {
-            _context.Produtos.Remove(produto);
-            _context.Entry(produto).State = EntityState.Deleted;
-            await Task.FromResult(_context.Set<Produto>().Remove(produto));
+            return await _context.Produtos.ToListAsync();
         }
     }
 }

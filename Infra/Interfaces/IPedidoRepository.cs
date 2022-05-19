@@ -6,13 +6,9 @@ using System.Threading.Tasks;
 
 namespace Infra.Interfaces
 {
-    public interface IPedidoRepository
+    public interface IPedidoRepository : IRepository<Pedido>
     {
-        Task Add(Pedido pedido);
         Task<Pedido> Get(Guid id);
-        Task<Item> GetItem(Guid id);
         Task<IEnumerable<Pedido>> GetAll();
-        Task Update(Pedido pedido);
-        Task Delete(Pedido pedido);
     }
 }

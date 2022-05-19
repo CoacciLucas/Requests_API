@@ -1,14 +1,13 @@
 ﻿using Domain.Entities;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Infra.Interfaces
 {
-    public interface IUsuarioRepository
+    public interface IUsuarioRepository : IRepository<Usuario>
     {
-        Task Create(Usuario usuario);
         Task<Usuario> Get(Guid id);
-        Task Update(Usuario usuario);
-        Task Delete(Usuario usuario);
+        Task<IEnumerable<Usuario>> GetAll();
     }
 }

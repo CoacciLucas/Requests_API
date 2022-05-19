@@ -1,14 +1,13 @@
 ﻿using Domain.Entities;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Infra.Interfaces
 {
-    public interface IProdutoRepository
+    public interface IProdutoRepository : IRepository<Produto>
     {
-        Task Create(Produto produto);
         Task<Produto> Get(Guid id);
-        Task Update(Produto produto);
-        Task Delete(Produto produto);
+        Task<IEnumerable<Produto>> GetAll();
     }
 }
