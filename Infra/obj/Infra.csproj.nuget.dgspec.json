@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Lucas Coacci\\source\\repos\\UserCRUD_API\\Infra\\Infra.csproj": {}
+    "F:\\Programação\\GitHub\\Requests_API\\Infra\\Infra.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Lucas Coacci\\source\\repos\\UserCRUD_API\\Domain\\Domain.csproj": {
+    "F:\\Programação\\GitHub\\Requests_API\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Lucas Coacci\\source\\repos\\UserCRUD_API\\Domain\\Domain.csproj",
+        "projectUniqueName": "F:\\Programação\\GitHub\\Requests_API\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\Users\\Lucas Coacci\\source\\repos\\UserCRUD_API\\Domain\\Domain.csproj",
-        "packagesPath": "C:\\Users\\Lucas Coacci\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Lucas Coacci\\source\\repos\\UserCRUD_API\\Domain\\obj\\",
+        "projectPath": "F:\\Programação\\GitHub\\Requests_API\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\Coacci\\.nuget\\packages\\",
+        "outputPath": "F:\\Programação\\GitHub\\Requests_API\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Lucas Coacci\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Coacci\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,7 +22,8 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://lider-aviacao.pkgs.visualstudio.com/53bc4f7d-ee0a-4578-b7e6-8b943707b53e/_packaging/SISOPE/nuget/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
@@ -67,7 +68,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -76,21 +78,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Lucas Coacci\\source\\repos\\UserCRUD_API\\Infra\\Infra.csproj": {
+    "F:\\Programação\\GitHub\\Requests_API\\Infra\\Infra.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Lucas Coacci\\source\\repos\\UserCRUD_API\\Infra\\Infra.csproj",
+        "projectUniqueName": "F:\\Programação\\GitHub\\Requests_API\\Infra\\Infra.csproj",
         "projectName": "Infra",
-        "projectPath": "C:\\Users\\Lucas Coacci\\source\\repos\\UserCRUD_API\\Infra\\Infra.csproj",
-        "packagesPath": "C:\\Users\\Lucas Coacci\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Lucas Coacci\\source\\repos\\UserCRUD_API\\Infra\\obj\\",
+        "projectPath": "F:\\Programação\\GitHub\\Requests_API\\Infra\\Infra.csproj",
+        "packagesPath": "C:\\Users\\Coacci\\.nuget\\packages\\",
+        "outputPath": "F:\\Programação\\GitHub\\Requests_API\\Infra\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Lucas Coacci\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Coacci\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -98,14 +100,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://lider-aviacao.pkgs.visualstudio.com/53bc4f7d-ee0a-4578-b7e6-8b943707b53e/_packaging/SISOPE/nuget/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\Lucas Coacci\\source\\repos\\UserCRUD_API\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\Lucas Coacci\\source\\repos\\UserCRUD_API\\Domain\\Domain.csproj"
+              "F:\\Programação\\GitHub\\Requests_API\\Domain\\Domain.csproj": {
+                "projectPath": "F:\\Programação\\GitHub\\Requests_API\\Domain\\Domain.csproj"
               }
             }
           }
@@ -147,7 +150,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -156,7 +160,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }
