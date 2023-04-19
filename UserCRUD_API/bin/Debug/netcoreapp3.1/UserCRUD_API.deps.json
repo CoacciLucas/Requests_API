@@ -31,6 +31,7 @@
     ".NETCoreApp,Version=v3.1": {
       "USERCRUD_API/1.0.0": {
         "dependencies": {
+          "AWSSDK.DynamoDBv2": "3.7.102.28",
           "Application": "1.0.0",
           "Domain": "1.0.0",
           "EntityFramework": "6.4.4",
@@ -322,6 +323,31 @@
         },
         "compile": {
           "USERCRUD_API.dll": {}
+        }
+      },
+      "AWSSDK.Core/3.7.106.21": {
+        "runtime": {
+          "lib/netcoreapp3.1/AWSSDK.Core.dll": {
+            "assemblyVersion": "3.3.0.0",
+            "fileVersion": "3.7.106.21"
+          }
+        },
+        "compile": {
+          "lib/netcoreapp3.1/AWSSDK.Core.dll": {}
+        }
+      },
+      "AWSSDK.DynamoDBv2/3.7.102.28": {
+        "dependencies": {
+          "AWSSDK.Core": "3.7.106.21"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/AWSSDK.DynamoDBv2.dll": {
+            "assemblyVersion": "3.3.0.0",
+            "fileVersion": "3.7.102.28"
+          }
+        },
+        "compile": {
+          "lib/netcoreapp3.1/AWSSDK.DynamoDBv2.dll": {}
         }
       },
       "EntityFramework/6.4.4": {
@@ -2507,6 +2533,7 @@
       },
       "Application/1.0.0": {
         "dependencies": {
+          "AWSSDK.DynamoDBv2": "3.7.102.28",
           "Domain": "1.0.0",
           "EntityFramework": "6.4.4",
           "Infra": "1.0.0",
@@ -2524,6 +2551,7 @@
       },
       "Domain/1.0.0": {
         "dependencies": {
+          "AWSSDK.DynamoDBv2": "3.7.102.28",
           "EntityFramework": "6.4.4",
           "Microsoft.AspNetCore.Mvc.Abstractions": "2.2.0",
           "Microsoft.AspNetCore.Mvc.Core": "2.2.5",
@@ -2539,6 +2567,7 @@
       },
       "Infra/1.0.0": {
         "dependencies": {
+          "AWSSDK.DynamoDBv2": "3.7.102.28",
           "Domain": "1.0.0",
           "EntityFramework": "6.4.4",
           "Microsoft.AspNetCore.Mvc.Abstractions": "2.2.0",
@@ -4186,6 +4215,20 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "AWSSDK.Core/3.7.106.21": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-NXeMfOWp1GeKod9tfbhPGtcAw6vj5b+cOocJcL5TOVfZ4QpTj+Wkjr4p0j5Q594nhTmXjXWYxU1MRzIOpn2LOg==",
+      "path": "awssdk.core/3.7.106.21",
+      "hashPath": "awssdk.core.3.7.106.21.nupkg.sha512"
+    },
+    "AWSSDK.DynamoDBv2/3.7.102.28": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-5kJWhCeUabk9kSW0QOUCdESqajJOnjnDQdmBMmD8h+3ZU6/KFuCiXGJaNmZN+eSpmhhx3euSSy6lYww5kKNUtA==",
+      "path": "awssdk.dynamodbv2/3.7.102.28",
+      "hashPath": "awssdk.dynamodbv2.3.7.102.28.nupkg.sha512"
     },
     "EntityFramework/6.4.4": {
       "type": "package",

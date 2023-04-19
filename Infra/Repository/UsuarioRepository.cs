@@ -1,4 +1,6 @@
-﻿using Domain.Entities;
+﻿using Amazon.DynamoDBv2;
+using Amazon.DynamoDBv2.DataModel;
+using Domain.Entities;
 using Infra.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -9,10 +11,13 @@ namespace Infra.Repository
 {
     public class UsuarioRepository : Repository<Usuario>, IUsuarioRepository
     {
+        private readonly IAmazonDynamoDB _dynamoDBClient;
+        private readonly DynamoDBContext _dynamoDBContext;
 
-        public UsuarioRepository(Context context) : base(context)
+        public UsuarioRepository(Context context, IAmazonDynamoDB dynamoDBClient, DynamoDBContext dynamoDBContext) : base(context)
         {
-
+            _dynamoDBClient = dynamoDBClient;
+            _dynamoDBContext = dynamoDBContext;
         }
         public async Task<Usuario> Get(Guid id)
         {

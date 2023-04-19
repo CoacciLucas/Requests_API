@@ -15,8 +15,6 @@ namespace Infra
             modelBuilder.Entity<Pedido>()
                 .HasMany(p => p.Itens);
             modelBuilder.Entity<Item>().Property(e => e.Id).ValueGeneratedNever();
-            /*modelBuilder.Entity<Item>().Ignore(x => x.PedidoId);*/
-
         }
 
         public DbSet<Usuario> Usuarios { get; set; }

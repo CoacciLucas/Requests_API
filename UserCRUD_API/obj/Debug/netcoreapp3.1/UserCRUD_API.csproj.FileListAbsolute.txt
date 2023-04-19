@@ -441,3 +441,5 @@ F:\Programacao\GitHub\Requests_API\UserCRUD_API\obj\Debug\netcoreapp3.1\USERCRUD
 F:\Programacao\GitHub\Requests_API\UserCRUD_API\obj\Debug\netcoreapp3.1\USERCRUD_API.dll
 F:\Programacao\GitHub\Requests_API\UserCRUD_API\obj\Debug\netcoreapp3.1\USERCRUD_API.pdb
 F:\Programacao\GitHub\Requests_API\UserCRUD_API\obj\Debug\netcoreapp3.1\USERCRUD_API.genruntimeconfig.cache
+F:\Programacao\GitHub\Requests_API\UserCRUD_API\bin\Debug\netcoreapp3.1\AWSSDK.Core.dll
+F:\Programacao\GitHub\Requests_API\UserCRUD_API\bin\Debug\netcoreapp3.1\AWSSDK.DynamoDBv2.dll

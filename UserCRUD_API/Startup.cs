@@ -1,3 +1,4 @@
+using Amazon.DynamoDBv2;
 using Application.Interfaces;
 using Application.Services;
 using Infra;
@@ -9,8 +10,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using System;
+using System.IO;
 
 namespace UserCRUD_API
 {
@@ -26,6 +29,13 @@ namespace UserCRUD_API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var config = new AmazonDynamoDBConfig
+            {
+                RegionEndpoint = Amazon.RegionEndpoint.USEast2
+            };
+            var client = new AmazonDynamoDBClient(config);
+            services.AddSingleton<IAmazonDynamoDB>(client);
+
             services.AddScoped<IUsuarioService, UsuarioService>();
             services.AddScoped<IProdutoService, ProdutoService>();
             services.AddScoped<IPedidoService, PedidoService>();
@@ -68,10 +78,6 @@ namespace UserCRUD_API
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-
-
-            
-
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger(c =>
             {
@@ -99,4 +105,15 @@ namespace UserCRUD_API
             });
         }
     }
+
+    static class CustomExtensionsMethods
+    {
+        public static IServiceCollection AddCustomDbContext(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddDbContext<Context>(x => x.LogTo(Console.WriteLine, LogLevel.Information));
+
+            return services;
+        }
+    }
 }
+
