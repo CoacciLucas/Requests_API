@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "/cbtUAx0i70XlsjfsTg2m4VMIArxVhxGqUZcv0vVD4xUWctGaNYQvroe7+tqqD8l9ZKSOLEz5SowuNs9NIhLYg==",
+  "dgSpecHash": "T4KlLmlzDiINsO3v8NXNUnX7/RHkZ177U7W4TAew9xzdUDlCdd3ncrlOXHQBZD1+ilySbPd8GVwFReFJn9weNA==",
   "success": true,
-  "projectFilePath": "F:\\Programação\\GitHub\\Requests_API\\Domain\\Domain.csproj",
+  "projectFilePath": "F:\\Programacao\\GitHub\\Requests_API\\Domain\\Domain.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Coacci\\.nuget\\packages\\awssdk.core\\3.7.106.21\\awssdk.core.3.7.106.21.nupkg.sha512",
+    "C:\\Users\\Coacci\\.nuget\\packages\\awssdk.dynamodbv2\\3.7.102.28\\awssdk.dynamodbv2.3.7.102.28.nupkg.sha512",
     "C:\\Users\\Coacci\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512",
     "C:\\Users\\Coacci\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Coacci\\.nuget\\packages\\microsoft.aspnetcore.authentication.core\\2.2.0\\microsoft.aspnetcore.authentication.core.2.2.0.nupkg.sha512",

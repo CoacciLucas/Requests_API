@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "F:\\Programação\\GitHub\\Requests_API\\Domain\\Domain.csproj": {}
+    "F:\\Programacao\\GitHub\\Requests_API\\Domain\\Domain.csproj": {}
   },
   "projects": {
-    "F:\\Programação\\GitHub\\Requests_API\\Domain\\Domain.csproj": {
+    "F:\\Programacao\\GitHub\\Requests_API\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Programação\\GitHub\\Requests_API\\Domain\\Domain.csproj",
+        "projectUniqueName": "F:\\Programacao\\GitHub\\Requests_API\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "F:\\Programação\\GitHub\\Requests_API\\Domain\\Domain.csproj",
+        "projectPath": "F:\\Programacao\\GitHub\\Requests_API\\Domain\\Domain.csproj",
         "packagesPath": "C:\\Users\\Coacci\\.nuget\\packages\\",
-        "outputPath": "F:\\Programação\\GitHub\\Requests_API\\Domain\\obj\\",
+        "outputPath": "F:\\Programacao\\GitHub\\Requests_API\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Coacci\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -41,6 +41,10 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "dependencies": {
+            "AWSSDK.DynamoDBv2": {
+              "target": "Package",
+              "version": "[3.7.102.28, )"
+            },
             "EntityFramework": {
               "target": "Package",
               "version": "[6.4.4, )"
@@ -78,7 +82,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }

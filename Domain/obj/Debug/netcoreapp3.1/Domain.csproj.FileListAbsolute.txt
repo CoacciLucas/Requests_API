@@ -11,3 +11,29 @@ C:\Users\Lucas Coacci\source\repos\UserCRUD_API\Domain\obj\Debug\netcoreapp3.1\D
 C:\Users\Lucas Coacci\source\repos\UserCRUD_API\Domain\bin\Debug\netcoreapp3.1\Domain.runtimeconfig.json
 C:\Users\Lucas Coacci\source\repos\UserCRUD_API\Domain\bin\Debug\netcoreapp3.1\Domain.runtimeconfig.dev.json
 C:\Users\Lucas Coacci\source\repos\UserCRUD_API\Domain\obj\Debug\netcoreapp3.1\Domain.genruntimeconfig.cache
+F:\Programação\GitHub\Requests_API\Domain\bin\Debug\netcoreapp3.1\Domain.deps.json
+F:\Programação\GitHub\Requests_API\Domain\bin\Debug\netcoreapp3.1\Domain.runtimeconfig.json
+F:\Programação\GitHub\Requests_API\Domain\bin\Debug\netcoreapp3.1\Domain.runtimeconfig.dev.json
+F:\Programação\GitHub\Requests_API\Domain\bin\Debug\netcoreapp3.1\Domain.dll
+F:\Programação\GitHub\Requests_API\Domain\bin\Debug\netcoreapp3.1\Domain.pdb
+F:\Programação\GitHub\Requests_API\Domain\obj\Debug\netcoreapp3.1\Domain.csproj.AssemblyReference.cache
+F:\Programação\GitHub\Requests_API\Domain\obj\Debug\netcoreapp3.1\Domain.GeneratedMSBuildEditorConfig.editorconfig
+F:\Programação\GitHub\Requests_API\Domain\obj\Debug\netcoreapp3.1\Domain.AssemblyInfoInputs.cache
+F:\Programação\GitHub\Requests_API\Domain\obj\Debug\netcoreapp3.1\Domain.AssemblyInfo.cs
+F:\Programação\GitHub\Requests_API\Domain\obj\Debug\netcoreapp3.1\Domain.csproj.CoreCompileInputs.cache
+F:\Programação\GitHub\Requests_API\Domain\obj\Debug\netcoreapp3.1\Domain.dll
+F:\Programação\GitHub\Requests_API\Domain\obj\Debug\netcoreapp3.1\Domain.pdb
+F:\Programação\GitHub\Requests_API\Domain\obj\Debug\netcoreapp3.1\Domain.genruntimeconfig.cache
+F:\Programacao\GitHub\Requests_API\Domain\bin\Debug\netcoreapp3.1\Domain.deps.json
+F:\Programacao\GitHub\Requests_API\Domain\bin\Debug\netcoreapp3.1\Domain.runtimeconfig.json
+F:\Programacao\GitHub\Requests_API\Domain\bin\Debug\netcoreapp3.1\Domain.runtimeconfig.dev.json
+F:\Programacao\GitHub\Requests_API\Domain\bin\Debug\netcoreapp3.1\Domain.dll
+F:\Programacao\GitHub\Requests_API\Domain\bin\Debug\netcoreapp3.1\Domain.pdb
+F:\Programacao\GitHub\Requests_API\Domain\obj\Debug\netcoreapp3.1\Domain.csproj.AssemblyReference.cache
+F:\Programacao\GitHub\Requests_API\Domain\obj\Debug\netcoreapp3.1\Domain.GeneratedMSBuildEditorConfig.editorconfig
+F:\Programacao\GitHub\Requests_API\Domain\obj\Debug\netcoreapp3.1\Domain.AssemblyInfoInputs.cache
+F:\Programacao\GitHub\Requests_API\Domain\obj\Debug\netcoreapp3.1\Domain.AssemblyInfo.cs
+F:\Programacao\GitHub\Requests_API\Domain\obj\Debug\netcoreapp3.1\Domain.csproj.CoreCompileInputs.cache
+F:\Programacao\GitHub\Requests_API\Domain\obj\Debug\netcoreapp3.1\Domain.dll
+F:\Programacao\GitHub\Requests_API\Domain\obj\Debug\netcoreapp3.1\Domain.pdb
+F:\Programacao\GitHub\Requests_API\Domain\obj\Debug\netcoreapp3.1\Domain.genruntimeconfig.cache

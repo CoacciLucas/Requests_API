@@ -30,6 +30,9 @@ namespace UserCRUD_API
             services.AddScoped<IProdutoService, ProdutoService>();
             services.AddScoped<IPedidoService, PedidoService>();
 
+            services.AddCors(options => options.AddDefaultPolicy(
+                builder => builder.AllowAnyOrigin()
+                ));
             services.AddDbContext<Context>(opt =>
                opt.UseInMemoryDatabase("UserList"));
 
@@ -65,6 +68,10 @@ namespace UserCRUD_API
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
+
+            
+
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger(c =>
             {
@@ -81,6 +88,8 @@ namespace UserCRUD_API
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors();
 
             app.UseAuthorization();
 

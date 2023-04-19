@@ -14,3 +14,35 @@ C:\Users\Lucas Coacci\source\repos\UserCRUD_API\Infra\obj\Debug\netcoreapp3.1\In
 C:\Users\Lucas Coacci\source\repos\UserCRUD_API\Infra\bin\Debug\netcoreapp3.1\Infra.runtimeconfig.json
 C:\Users\Lucas Coacci\source\repos\UserCRUD_API\Infra\bin\Debug\netcoreapp3.1\Infra.runtimeconfig.dev.json
 C:\Users\Lucas Coacci\source\repos\UserCRUD_API\Infra\obj\Debug\netcoreapp3.1\Infra.genruntimeconfig.cache
+F:\Programação\GitHub\Requests_API\Infra\bin\Debug\netcoreapp3.1\Infra.deps.json
+F:\Programação\GitHub\Requests_API\Infra\bin\Debug\netcoreapp3.1\Infra.runtimeconfig.json
+F:\Programação\GitHub\Requests_API\Infra\bin\Debug\netcoreapp3.1\Infra.runtimeconfig.dev.json
+F:\Programação\GitHub\Requests_API\Infra\bin\Debug\netcoreapp3.1\Infra.dll
+F:\Programação\GitHub\Requests_API\Infra\bin\Debug\netcoreapp3.1\Infra.pdb
+F:\Programação\GitHub\Requests_API\Infra\bin\Debug\netcoreapp3.1\Domain.dll
+F:\Programação\GitHub\Requests_API\Infra\bin\Debug\netcoreapp3.1\Domain.pdb
+F:\Programação\GitHub\Requests_API\Infra\obj\Debug\netcoreapp3.1\Infra.csproj.AssemblyReference.cache
+F:\Programação\GitHub\Requests_API\Infra\obj\Debug\netcoreapp3.1\Infra.GeneratedMSBuildEditorConfig.editorconfig
+F:\Programação\GitHub\Requests_API\Infra\obj\Debug\netcoreapp3.1\Infra.AssemblyInfoInputs.cache
+F:\Programação\GitHub\Requests_API\Infra\obj\Debug\netcoreapp3.1\Infra.AssemblyInfo.cs
+F:\Programação\GitHub\Requests_API\Infra\obj\Debug\netcoreapp3.1\Infra.csproj.CoreCompileInputs.cache
+F:\Programação\GitHub\Requests_API\Infra\obj\Debug\netcoreapp3.1\Infra.csproj.CopyComplete
+F:\Programação\GitHub\Requests_API\Infra\obj\Debug\netcoreapp3.1\Infra.dll
+F:\Programação\GitHub\Requests_API\Infra\obj\Debug\netcoreapp3.1\Infra.pdb
+F:\Programação\GitHub\Requests_API\Infra\obj\Debug\netcoreapp3.1\Infra.genruntimeconfig.cache
+F:\Programacao\GitHub\Requests_API\Infra\bin\Debug\netcoreapp3.1\Infra.deps.json
+F:\Programacao\GitHub\Requests_API\Infra\bin\Debug\netcoreapp3.1\Infra.runtimeconfig.json
+F:\Programacao\GitHub\Requests_API\Infra\bin\Debug\netcoreapp3.1\Infra.runtimeconfig.dev.json
+F:\Programacao\GitHub\Requests_API\Infra\bin\Debug\netcoreapp3.1\Infra.dll
+F:\Programacao\GitHub\Requests_API\Infra\bin\Debug\netcoreapp3.1\Infra.pdb
+F:\Programacao\GitHub\Requests_API\Infra\bin\Debug\netcoreapp3.1\Domain.dll
+F:\Programacao\GitHub\Requests_API\Infra\bin\Debug\netcoreapp3.1\Domain.pdb
+F:\Programacao\GitHub\Requests_API\Infra\obj\Debug\netcoreapp3.1\Infra.csproj.AssemblyReference.cache
+F:\Programacao\GitHub\Requests_API\Infra\obj\Debug\netcoreapp3.1\Infra.GeneratedMSBuildEditorConfig.editorconfig
+F:\Programacao\GitHub\Requests_API\Infra\obj\Debug\netcoreapp3.1\Infra.AssemblyInfoInputs.cache
+F:\Programacao\GitHub\Requests_API\Infra\obj\Debug\netcoreapp3.1\Infra.AssemblyInfo.cs
+F:\Programacao\GitHub\Requests_API\Infra\obj\Debug\netcoreapp3.1\Infra.csproj.CoreCompileInputs.cache
+F:\Programacao\GitHub\Requests_API\Infra\obj\Debug\netcoreapp3.1\Infra.csproj.CopyComplete
+F:\Programacao\GitHub\Requests_API\Infra\obj\Debug\netcoreapp3.1\Infra.dll
+F:\Programacao\GitHub\Requests_API\Infra\obj\Debug\netcoreapp3.1\Infra.pdb
+F:\Programacao\GitHub\Requests_API\Infra\obj\Debug\netcoreapp3.1\Infra.genruntimeconfig.cache

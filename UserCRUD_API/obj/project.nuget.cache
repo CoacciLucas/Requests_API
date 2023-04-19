@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "Vhex3XpPPvyWnH6rB88pm0lkBYvLD5V6VG7meytH8vWswTCsqwQJn28wqVPj9pzV7MTxRJCl+v0Q/3Urx1Lkzw==",
+  "dgSpecHash": "bEM+G8L3cNOb47qANCHX4Pp2uRHiLuM/2YRaQ2kwgROyrvnOFazTX38HsMmpfFV2XlEwd9OnWtxruFeT4AsY3g==",
   "success": true,
-  "projectFilePath": "F:\\Programação\\GitHub\\Requests_API\\UserCRUD_API\\USERCRUD_API.csproj",
+  "projectFilePath": "F:\\Programacao\\GitHub\\Requests_API\\UserCRUD_API\\USERCRUD_API.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Coacci\\.nuget\\packages\\awssdk.core\\3.7.106.21\\awssdk.core.3.7.106.21.nupkg.sha512",
+    "C:\\Users\\Coacci\\.nuget\\packages\\awssdk.dynamodbv2\\3.7.102.28\\awssdk.dynamodbv2.3.7.102.28.nupkg.sha512",
     "C:\\Users\\Coacci\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512",
     "C:\\Users\\Coacci\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Coacci\\.nuget\\packages\\microsoft.aspnetcore.authentication.core\\2.2.0\\microsoft.aspnetcore.authentication.core.2.2.0.nupkg.sha512",
