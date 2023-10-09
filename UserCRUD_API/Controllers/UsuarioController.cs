@@ -1,11 +1,13 @@
 ﻿using Application.Commands;
-using Application.Interfaces;
-using Application.Services;
-using Infra;
+using Application.Commands.Usuario;
+using Application.DTO;
+using Application.Reads.Queries;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace UserCRUD_API
 {
@@ -13,82 +15,47 @@ namespace UserCRUD_API
     [ApiController]
     public class UsuariosController : ControllerBase
     {
-        private readonly IUsuarioService _usuarioService;
 
-        public UsuariosController(IUsuarioService usuarioService)
+        private readonly IMediator _handle;
+
+
+        public UsuariosController(IMediator handle) : base()
         {
-            _usuarioService = usuarioService;
+            _handle = handle;
         }
 
-        // GET: api/Usuarios
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<VisualizarUsuario>>> GetAll()
-        {
-
-            return await _usuarioService.GetAll();
-        }
-
+ 
         // GET: api/Usuarios/5
+        [HttpGet]
+        public async Task<ActionResult<List<UserDTO>>> GetAllUsers()
+        {
+            var result = await _handle.Send(new ObterTodosUsersQuery());
+
+            return Ok(result);
+        }
+
         [HttpGet("{id}")]
-        public async Task<VisualizarUsuario> GetUsuario(Guid id)
+        public async Task<ActionResult<UserDTO>> GetUserById(string id)
         {
-            return await _usuarioService.Get(id);
+            var result = await _handle.Send(new ObterUserPorIdQuery(id));
+
+            return Ok(result);
         }
 
-        // PUT: api/Usuarios/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutUsuario(Guid id, AtualizarUsuario usuarioCommand)
-        {
-            try
-            {
-                await _usuarioService.Update(id, usuarioCommand);
-
-                return Created("", null);
-            }
-            catch (ArgumentNullException ex)
-            {
-                return BadRequest(ex.Message);
-            }
-            catch (InvalidOperationException ex)
-            {
-                return BadRequest(ex.Message);
-            }
-        }
-
-        // POST: api/Usuarios
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult> PostUsuario(CadastrarUsuario usuario)
+        public async Task<ActionResult> PostUsuario(CadastrarUsuarioCommand cadastrarUsuarioCommand)
         {
-            try
-            {
-                await _usuarioService.Add(usuario);
+            var result = await _handle.Send(cadastrarUsuarioCommand);
 
-                return Created("", null);
-            }
-            catch (InvalidOperationException ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            return Ok(result.Data);
         }
 
         // DELETE: api/Usuarios/5
-        [HttpDelete("{id}")]
-        public async Task<ActionResult> DeleteUsuario(Guid id)
+        [HttpDelete]
+        public async Task<ActionResult> DeleteUsuario([FromForm] DeletarUsuarioCommand deletarUsuarioCommand)
         {
-            try
-            {
-                await _usuarioService.Delete(id);
-
-                return Created("", null);
-            }
-            catch (InvalidOperationException ex)
-            {
-                return BadRequest(ex.Message);
-            }
+           await _handle.Send(deletarUsuarioCommand);
+            return StatusCode(410, new { message = "User deleted succesfully!" });
         }
 
     }

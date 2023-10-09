@@ -7,16 +7,16 @@ namespace Domain.Entities
     public enum Status { Criado, Cancelado, Concluido }
     public class Pedido
     {
-        public Pedido(Guid idUsuario)
+        public Pedido(string idUsuario)
         {
-            Id = Guid.NewGuid();
+            Id = Guid.NewGuid().ToString();
             IdUsuario = idUsuario;
             Status = Status.Criado;
             Validar();
         }
         protected Pedido() { }
-        public Guid Id { get; private set; }
-        public Guid IdUsuario { get; private set; }
+        public string Id { get; private set; }
+        public string IdUsuario { get; private set; }
         private readonly List<Item> _itens = new List<Item>();
         public IReadOnlyCollection<Item> Itens => _itens;
         public Status Status { get; private set; }
@@ -31,7 +31,7 @@ namespace Domain.Entities
 
             ValorTotal += produto.Valor * quantidade;
         }
-        public void RemoverItem(Guid idItem)
+        public void RemoverItem(string idItem)
         {
             var item = _itens.FirstOrDefault(x => x.Id == idItem);
             if (item == null)

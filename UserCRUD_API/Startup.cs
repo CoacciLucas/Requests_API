@@ -1,9 +1,18 @@
 using Amazon.DynamoDBv2;
+using Amazon.DynamoDBv2.DataModel;
+using Application;
+using Application.Commands;
+using Application.Commands.Handler;
+using Application.Commands.Usuario;
+using Application.DTO;
 using Application.Interfaces;
-using Application.Services;
+using Application.Reads.Queries;
+using AutoMapper;
+using Domain.Entities;
 using Infra;
 using Infra.Interfaces;
 using Infra.Repository;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -13,7 +22,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using System;
-using System.IO;
+using System.Collections.Generic;
 
 namespace UserCRUD_API
 {
@@ -29,16 +38,39 @@ namespace UserCRUD_API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<IUsuarioRepository, UsuarioRepository>();
+            services.AddTransient<IRequestHandler<ObterTodosUsersQuery, List<UserDTO>>, ObterTodosUsersQueryHandler>();
+            services.AddTransient<IRequestHandler<ObterUserPorIdQuery, UserDTO>, ObterUserPorIdQueryHandler>();
+            services.AddTransient<IRequestHandler<CadastrarUsuarioCommand, CommandResult>, CadastrarUsuarioCommandHandler>();
+            services.AddTransient<IRequestHandler<DeletarUsuarioCommand, CommandResult>, DeletarUsuarioCommandHandler>();
+            services.AddControllers();
+            services.AddMediatR(typeof(Startup));
+            services.AddSingleton<IRepository<User>, UsuarioRepository>();
+
+            var awsOptions = Configuration.GetAWSOptions();
+            services.AddDefaultAWSOptions(awsOptions);
+
             var config = new AmazonDynamoDBConfig
             {
                 RegionEndpoint = Amazon.RegionEndpoint.USEast2
             };
             var client = new AmazonDynamoDBClient(config);
+            services.AddAWSService<IAmazonDynamoDB>();
+            services.AddSingleton<DynamoDBContext>();
+            services.AddSingleton<IDynamoDBContext, DynamoDBContext>();
             services.AddSingleton<IAmazonDynamoDB>(client);
+            services.AddScoped<IMediator, Mediator>();
 
-            services.AddScoped<IUsuarioService, UsuarioService>();
-            services.AddScoped<IProdutoService, ProdutoService>();
-            services.AddScoped<IPedidoService, PedidoService>();
+            var configuration = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<User, UserDTO>().ReverseMap();
+            });
+
+            services.AddAutoMapper(typeof(CadastrarUsuarioCommand));
+            services.AddAutoMapper(typeof(ObterUserPorIdQuery));
+            services.AddAutoMapper(typeof(ObterTodosUsersQuery));
+            services.AddAutoMapper(typeof(Startup));
+
 
             services.AddCors(options => options.AddDefaultPolicy(
                 builder => builder.AllowAnyOrigin()
@@ -47,8 +79,6 @@ namespace UserCRUD_API
                opt.UseInMemoryDatabase("UserList"));
 
             services.AddTransient<IUsuarioRepository, UsuarioRepository>();
-            services.AddTransient<IProdutoRepository, ProdutoRepository>();
-            services.AddTransient<IPedidoRepository, PedidoRepository>();
 
             services.AddControllers();
             // Register the Swagger generator, defining 1 or more Swagger documents
@@ -73,6 +103,7 @@ namespace UserCRUD_API
                     }
                 });
             });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -8,7 +8,7 @@ namespace Domain.Entities
     {
         public Item(Produto produto, Pedido pedido, int quantidade)
         {
-            Id = Guid.NewGuid();
+            Id = Guid.NewGuid().ToString();
             Descricao = produto.Descricao;
             ProdutoId = produto.Id;
             PedidoId = pedido.Id;
@@ -18,10 +18,10 @@ namespace Domain.Entities
         }
 
         protected Item() { }
-        public Guid Id { get; private set; }
+        public string Id { get; private set; }
         public string Descricao { get; private set; }
-        public Guid ProdutoId { get; private set; }
-        public Guid PedidoId { get; private set; }
+        public string ProdutoId { get; private set; }
+        public string PedidoId { get; private set; }
         public int Quantidade { get; private set; }
 
         private void Validar()

@@ -6,7 +6,7 @@ namespace Application.Commands
 {
     public class VisualizarUsuario
     {
-        public VisualizarUsuario(Guid id, string nome, string email, string cpf, bool ativo, DateTime dataNascimento)
+        public VisualizarUsuario(string id, string nome, string email, string cpf, bool ativo, DateTime dataNascimento)
         {
             Id = id;
             Nome = nome;
@@ -16,7 +16,7 @@ namespace Application.Commands
             DataNascimento = dataNascimento;
         }
 
-        public Guid Id { get; set; }
+        public string Id { get; set; }
         public string Nome { get; set; }
         public string Email { get; set; }
         public string Cpf { get; set; }

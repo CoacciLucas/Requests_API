@@ -17,7 +17,7 @@ namespace Infra
             modelBuilder.Entity<Item>().Property(e => e.Id).ValueGeneratedNever();
         }
 
-        public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<User> Usuarios { get; set; }
         public DbSet<Produto> Produtos { get; set; }
         public DbSet<Pedido> Pedidos { get; set; }
         public DbSet<Item> Itens { get; set; }

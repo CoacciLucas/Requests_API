@@ -1,81 +1,39 @@
-﻿using Application.Commands;
+﻿using Application.DTO;
 using Application.Interfaces;
+using AutoMapper;
 using Domain.Entities;
-using Infra;
 using Infra.Interfaces;
-using Infra.Repository;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
+
 namespace Application.Services
 {
     public class UsuarioService : IUsuarioService
     {
         private readonly IUsuarioRepository _usuarioRepository;
-        private readonly Context _context;
+        private readonly IMapper _mapper;
 
-        public UsuarioService(Context context, IUsuarioRepository usuarioRepository)
+        public UsuarioService(IUsuarioRepository usuarioRepository, IMapper mapper)
         {
-            _context = context;
             _usuarioRepository = usuarioRepository;
+            _mapper = mapper;
         }
-        public async Task<List<VisualizarUsuario>> GetAll()
+
+        public async Task<List<UserDTO>> GetAll()
         {
-            var usuariosParaVisualizacao = new List<VisualizarUsuario>();
-            var usuarios = await _context.Usuarios.ToListAsync();
+            var user = await _usuarioRepository.GetAllAsync();
+            var users = _mapper.Map<List<UserDTO>>(user);
 
-            foreach (var usuario in usuarios)
-                usuariosParaVisualizacao.Add(EntityToVO(usuario));
-
-            return usuariosParaVisualizacao;
+            return users;
         }
-        public async Task<VisualizarUsuario> Get(Guid id)
+        public async Task<UserDTO> GetByIdAsync(string id)
         {
-            var usuario = await _usuarioRepository.Get(id);
+            var user = await _usuarioRepository.GetByIdAsync(id);
+            var userDTO = _mapper.Map<UserDTO>(user);
 
-            return usuario == null ? null : EntityToVO(usuario);
-                
+            return userDTO;
         }
-        public async Task Add(CadastrarUsuario usuarioCommand)
-        {
-            var usuario = new Usuario(usuarioCommand.Nome, usuarioCommand.Email, usuarioCommand.Cpf, usuarioCommand.DataNascimento);
-            await _usuarioRepository.AddAsync(usuario);
-            await _context.SaveChangesAsync();
-        }
-        public async Task Update(Guid id, AtualizarUsuario usuarioCommand)
-        {
-            if (!UsuarioExists(id))
-                throw new ArgumentNullException("Usuário não foi encontrado");
-
-            var usuario = await _usuarioRepository.Get(id);
-
-            usuario.DefinirNome(usuarioCommand.Nome);
-            usuario.DefinirCpf(usuarioCommand.Cpf);
-            usuario.DefinirDataNascimento(usuarioCommand.DataNascimento);
-            usuario.DefinirAtivo(usuarioCommand.Ativo);
-            usuario.Validar();
-            
-            await _usuarioRepository.UpdateAsync(usuario);
-            await _context.SaveChangesAsync();
-        }
-        public async Task Delete(Guid id)
-        {
-            var usuario = await _usuarioRepository.Get(id);
-
-            await _usuarioRepository.DeleteAsync(usuario);
-            await _context.SaveChangesAsync();
-        }
-        private static VisualizarUsuario EntityToVO(Usuario usuario)
-        {
-            return new VisualizarUsuario(usuario.Id, usuario.Nome, usuario.Email, usuario.Cpf, usuario.Ativo, usuario.DataNascimento);
-        }
-        private bool UsuarioExists(Guid id)
-        {
-            return _context.Usuarios.Any(e => e.Id == id);
-        }
-
-
     }
 }

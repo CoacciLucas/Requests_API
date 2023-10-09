@@ -30,6 +30,11 @@ F:\Programação\GitHub\Requests_API\Infra\obj\Debug\netcoreapp3.1\Infra.csproj.
 F:\Programação\GitHub\Requests_API\Infra\obj\Debug\netcoreapp3.1\Infra.dll
 F:\Programação\GitHub\Requests_API\Infra\obj\Debug\netcoreapp3.1\Infra.pdb
 F:\Programação\GitHub\Requests_API\Infra\obj\Debug\netcoreapp3.1\Infra.genruntimeconfig.cache
+F:\Programacao\GitHub\Requests_API\Infra\obj\Debug\netcoreapp3.1\Infra.csproj.AssemblyReference.cache
+F:\Programacao\GitHub\Requests_API\Infra\obj\Debug\netcoreapp3.1\Infra.GeneratedMSBuildEditorConfig.editorconfig
+F:\Programacao\GitHub\Requests_API\Infra\obj\Debug\netcoreapp3.1\Infra.AssemblyInfoInputs.cache
+F:\Programacao\GitHub\Requests_API\Infra\obj\Debug\netcoreapp3.1\Infra.AssemblyInfo.cs
+F:\Programacao\GitHub\Requests_API\Infra\obj\Debug\netcoreapp3.1\Infra.csproj.CoreCompileInputs.cache
 F:\Programacao\GitHub\Requests_API\Infra\bin\Debug\netcoreapp3.1\Infra.deps.json
 F:\Programacao\GitHub\Requests_API\Infra\bin\Debug\netcoreapp3.1\Infra.runtimeconfig.json
 F:\Programacao\GitHub\Requests_API\Infra\bin\Debug\netcoreapp3.1\Infra.runtimeconfig.dev.json
@@ -37,11 +42,6 @@ F:\Programacao\GitHub\Requests_API\Infra\bin\Debug\netcoreapp3.1\Infra.dll
 F:\Programacao\GitHub\Requests_API\Infra\bin\Debug\netcoreapp3.1\Infra.pdb
 F:\Programacao\GitHub\Requests_API\Infra\bin\Debug\netcoreapp3.1\Domain.dll
 F:\Programacao\GitHub\Requests_API\Infra\bin\Debug\netcoreapp3.1\Domain.pdb
-F:\Programacao\GitHub\Requests_API\Infra\obj\Debug\netcoreapp3.1\Infra.csproj.AssemblyReference.cache
-F:\Programacao\GitHub\Requests_API\Infra\obj\Debug\netcoreapp3.1\Infra.GeneratedMSBuildEditorConfig.editorconfig
-F:\Programacao\GitHub\Requests_API\Infra\obj\Debug\netcoreapp3.1\Infra.AssemblyInfoInputs.cache
-F:\Programacao\GitHub\Requests_API\Infra\obj\Debug\netcoreapp3.1\Infra.AssemblyInfo.cs
-F:\Programacao\GitHub\Requests_API\Infra\obj\Debug\netcoreapp3.1\Infra.csproj.CoreCompileInputs.cache
 F:\Programacao\GitHub\Requests_API\Infra\obj\Debug\netcoreapp3.1\Infra.csproj.CopyComplete
 F:\Programacao\GitHub\Requests_API\Infra\obj\Debug\netcoreapp3.1\Infra.dll
 F:\Programacao\GitHub\Requests_API\Infra\obj\Debug\netcoreapp3.1\Infra.pdb

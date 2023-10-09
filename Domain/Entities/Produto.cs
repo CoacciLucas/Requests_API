@@ -6,7 +6,7 @@ namespace Domain.Entities
     {
         public Produto(string descricao, decimal valor, int quantidadeNoEstoque)
         {
-            Id = Guid.NewGuid();
+            Id = Guid.NewGuid().ToString();
             Descricao = descricao;
             Valor = valor;
             Ativo = true;
@@ -14,7 +14,7 @@ namespace Domain.Entities
             Validar();
         }
         protected Produto() { }
-        public Guid Id { get; private set; }
+        public string Id { get; private set; }
         public string Descricao { get; private set; }
         public decimal Valor { get; private set; }
         public bool Ativo { get; private set; }
