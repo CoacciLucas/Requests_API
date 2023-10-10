@@ -22,8 +22,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://lider-aviacao.pkgs.visualstudio.com/53bc4f7d-ee0a-4578-b7e6-8b943707b53e/_packaging/SISOPE/nuget/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
@@ -43,15 +42,15 @@
           "dependencies": {
             "AWSSDK.DynamoDBv2": {
               "target": "Package",
-              "version": "[3.7.102.28, )"
+              "version": "[3.7.203.1, )"
             },
             "AWSSDK.Extensions.NETCore.Setup": {
               "target": "Package",
-              "version": "[3.7.5, )"
+              "version": "[3.7.7, )"
             },
             "AWSSDK.SecurityToken": {
               "target": "Package",
-              "version": "[3.7.101.50, )"
+              "version": "[3.7.202.4, )"
             },
             "AutoMapper": {
               "target": "Package",
@@ -67,11 +66,11 @@
             },
             "FluentValidation": {
               "target": "Package",
-              "version": "[11.5.2, )"
+              "version": "[11.7.1, )"
             },
             "MediatR": {
               "target": "Package",
-              "version": "[11.1.0, )"
+              "version": "[12.1.1, )"
             },
             "MediatR.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",
@@ -87,11 +86,27 @@
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[5.0.16, )"
+              "version": "[7.0.11, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.11, )"
             },
             "Microsoft.EntityFrameworkCore.InMemory": {
               "target": "Package",
-              "version": "[5.0.16, )"
+              "version": "[7.0.11, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.11, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[7.0.11, )"
             }
           },
           "imports": [

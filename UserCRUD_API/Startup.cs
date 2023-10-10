@@ -5,7 +5,6 @@ using Application.Commands;
 using Application.Commands.Handler;
 using Application.Commands.Usuario;
 using Application.DTO;
-using Application.Interfaces;
 using Application.Reads.Queries;
 using AutoMapper;
 using Domain.Entities;
@@ -23,6 +22,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 
 namespace UserCRUD_API
 {
@@ -44,7 +44,7 @@ namespace UserCRUD_API
             services.AddTransient<IRequestHandler<CadastrarUsuarioCommand, CommandResult>, CadastrarUsuarioCommandHandler>();
             services.AddTransient<IRequestHandler<DeletarUsuarioCommand, CommandResult>, DeletarUsuarioCommandHandler>();
             services.AddControllers();
-            services.AddMediatR(typeof(Startup));
+            services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
             services.AddSingleton<IRepository<User>, UsuarioRepository>();
 
             var awsOptions = Configuration.GetAWSOptions();
@@ -75,8 +75,9 @@ namespace UserCRUD_API
             services.AddCors(options => options.AddDefaultPolicy(
                 builder => builder.AllowAnyOrigin()
                 ));
-            services.AddDbContext<Context>(opt =>
-               opt.UseInMemoryDatabase("UserList"));
+            services.AddDbContext<Context>(opt => opt.UseNpgsql(Configuration.GetConnectionString("Default")));
+
+            services.AddDbContext<Context>(opt => opt.UseSqlServer(Configuration.GetConnectionString("Default")));
 
             services.AddTransient<IUsuarioRepository, UsuarioRepository>();
 
@@ -141,7 +142,7 @@ namespace UserCRUD_API
     {
         public static IServiceCollection AddCustomDbContext(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<Context>(x => x.LogTo(Console.WriteLine, LogLevel.Information));
+            services.AddDbContext<Infra.Context>(x => x.LogTo(Console.WriteLine, LogLevel.Information));
 
             return services;
         }

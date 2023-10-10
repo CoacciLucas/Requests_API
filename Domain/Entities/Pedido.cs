@@ -22,7 +22,7 @@ namespace Domain.Entities
         public Status Status { get; private set; }
         public decimal ValorTotal { get; private set; }
 
-        public void AdicionarItem(Produto produto, int quantidade)
+        public void AdicionarItem(Produto produto, int quantidade, string testeMigration)
         {
             if (_itens.Any(x => x.ProdutoId == produto.Id))
                 throw new InvalidOperationException("O produto ja existe na lista");

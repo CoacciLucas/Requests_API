@@ -1,25 +1,24 @@
 ﻿using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infra
+namespace Infra;
+
+public class Context : DbContext
 {
-    public class Context : DbContext
+    public Context(DbContextOptions<Context> options)
+        : base(options)
     {
-        public Context(DbContextOptions<Context> options)
-            : base(options)
-        {
 
-        }
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Pedido>()
-                .HasMany(p => p.Itens);
-            modelBuilder.Entity<Item>().Property(e => e.Id).ValueGeneratedNever();
-        }
-
-        public DbSet<User> Usuarios { get; set; }
-        public DbSet<Produto> Produtos { get; set; }
-        public DbSet<Pedido> Pedidos { get; set; }
-        public DbSet<Item> Itens { get; set; }
     }
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Pedido>()
+            .HasMany(p => p.Itens);
+        modelBuilder.Entity<Item>().Property(e => e.Id).ValueGeneratedNever();
+    }
+
+    public DbSet<User> Usuarios { get; set; }
+    public DbSet<Produto> Produtos { get; set; }
+    public DbSet<Pedido> Pedidos { get; set; }
+    public DbSet<Item> Itens { get; set; }
 }
